@@ -1,0 +1,58 @@
+---
+title: "Sesión 01"
+date: "2023-05-24"
+---
+
+## Objetivos
+
+En esta sesión se buscará abordar los siguientes temas:
+
+-   Introducción a R y Rstudio.
+
+-   Operaciones usuales.
+
+-   Instalación de paquetes.
+
+-   Administración de entorno.
+
+-   Configuración de proyecto y carpetas.
+
+-   Instalación de paquetes.
+
+-   Importar base de datos.
+
+## Materiales
+
+::: panel-tabset
+### Teoría grabada
+
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/830428385?h=b33f23f028&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="D&amp;iacute;a-01-Teor&amp;iacute;a"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+### Práctica grabada
+
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/830520105?h=0b6a5e979a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="video1388741605"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+### Slides
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+```
+
+```{r show-slide-tabs1, echo=FALSE, results="asis"}
+slide_buttons("/slides/sesion01/sesion01")
+```
+
+```{=html}
+<iframe width="780" height="500" src="../slides/sesion01/sesion01.html" title="Sesión 1 - Intro a R"></iframe>
+```
+
+### Talleres
+
+|                              |                                                                                  |
+|---------------------|---------------------------------------------------|
+| Instructivo en línea         | [Aquí](../taller/taller01/taller01_instructivo.html)                                                                       |
+| Instructivo con solucionario | [Aquí](../taller/taller01/taller01_instructivo_sol.html)                                                                       |
+| Quarto para alumnos          | [Aquí](../taller/taller01/taller01_alumno.qmd)                                                                       |
+| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/u/1/folders/1amSEyuniFW72O0atrTh2pdBVWu1QfCP7) |
+
+:::

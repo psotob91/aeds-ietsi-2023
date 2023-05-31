@@ -1,0 +1,47 @@
+---
+title: "Sesión 02"
+date: "2023-05-26"
+---
+
+## Objetivos
+
+En esta sesión se buscará abordar los siguientes temas:
+
+-   Estrategias gráficas de inspección/exploración de datos con ggplot().
+
+## Materiales
+
+::: panel-tabset
+
+### Teoría grabada
+
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/832066450?h=5883bd33e7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="video2"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+### Práctica grabada
+
+Por fallas técnicas, esta parte de la clase no fue grabada.
+
+### Slides
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+```
+
+```{r show-slide-tabs1, echo=FALSE, results="asis"}
+slide_buttons("/slides/sesion02/sesion02")
+```
+
+```{=html}
+<iframe width="780" height="500" src="../slides/sesion02/sesion02.html" title="Sesión 2 - Introducción a la visualización de datos con ggplot2"></iframe>
+```
+
+### Talleres
+
+|                              |                                                                                  |
+|----------------------|--------------------------------------------------|
+| Instructivo en línea         | [Aquí](../taller/taller02/taller02_instructivo.html)                                                 |
+| Instructivo con solucionario | [Aquí](../taller/taller02/taller02_instructivo_sol.html)                                                                       |
+| Quarto para alumnos          | [Aquí](../taller/taller02/taller02_alumno.qmd)                                                                       |
+| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1hSjGwo5oI7dwYQJM5WZC2_scNb36PnJ3) |
+
+:::

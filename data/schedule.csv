@@ -1,0 +1,19 @@
+group;subgroup;date;date_end;title;deadline;content;example;assignment
+Módulo 1: Manejo de datos con R;Sesión 0;24/05/2023;;Palabras de bienvenida y presentación del programa;;;;
+Módulo 1: Manejo de datos con R;Sesión 1;24/05/2023;;Clase teórica: Verificación de instalación de R, Rstudio y Quarto. Primeros pasos con R. Importar datos con R.;;;;
+Módulo 1: Manejo de datos con R;Sesión 2;24/05/2023;;Clase práctica: Taller de trabajo en equipo: Primeros pasos con R. Importar datos con R.;;;;
+Módulo 1: Manejo de datos con R;Sesión 3;26/05/2023;;Clase teórica: Introducción a la visualización de datos con ggplot2.;;;;
+Módulo 1: Manejo de datos con R;Sesión 4;26/05/2023;;Clase práctica: Introducción a la visualización de datos con ggplot2.;;;;
+Módulo 2: Análisis Descriptivo con R;Sesión 5;31/05/2023;;Clase teórica: Manejo de datos con DPLYR 1: Seleccionar y ordenar filas y columnas. Crear y modificar columnas. Etiquetas y metadatos. Helpers.;;;;
+Módulo 2: Análisis Descriptivo con R;Sesión 6;31/05/2023;;Clase práctica: Manejo de datos con DPLYR 1: Seleccionar y ordenar filas y columnas. Crear y modificar columnas. Etiquetas y metadatos. Helpers.;;;;
+Módulo 2: Análisis Descriptivo con R;Sesión 7;2/06/2023;;Clase teórica: Inspección inicial de datos. Análisis descriptivo de datos 1.;;;;
+Módulo 2: Análisis Descriptivo con R;Sesión 8;2/06/2023;;Clase práctica: Inspección inicial de datos. Análisis descriptivo de datos 1.;;;;
+Módulo 2: Análisis Descriptivo con R;Sesión 9;9/06/2023;;Clase teórica: Análisis descriptivo de datos 2.;;;;
+Módulo 2: Análisis Descriptivo con R;Sesión 10;9/06/2023;;Clase práctica: Análisis descriptivo de datos 2.;;;;
+Módulo 3: Inferencia Estadística con R;Sesión 11;14/06/2023;;Clase teórica: Prueba de hipótesis y Estimación 1.;;;;
+Módulo 3: Inferencia Estadística con R;Sesión 12;14/06/2023;;Clase práctica: Prueba de hipótesis y Estimación 1.;;;;
+Módulo 3: Inferencia Estadística con R;Sesión 13;16/06/2023;30/10/2022;Clase teórica: Prueba de hipótesis y Estimación 2.;;;;
+Módulo 3: Inferencia Estadística con R;Sesión 14;16/06/2023;;Clase práctica: Prueba de hipótesis y Estimación 2.;;;;
+Módulo 3: Inferencia Estadística con R;Sesión 15;21/06/2023;;Clase teórica: Tablas y reporte reproducibles.;;;;
+Módulo 3: Inferencia Estadística con R;Sesión 16;21/06/2023;;Clase práctica: Tablas y reporte reproducibles.;;;;
+Módulo 3: Inferencia Estadística con R;Examen Final;16/06/2023;23/06/2023;Trabajo asincrónico. Desarrollo de conjunto de datos problema;23/06/2023;;;

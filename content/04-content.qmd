@@ -1,0 +1,39 @@
+---
+title: "Sesión 04"
+date: "2022-10-10"
+---
+
+## Objetivos
+
+[Disponible cuando se grabe esta clase]
+
+## Materiales
+
+::: {.panel-tabset}
+
+### Clase grabada
+
+[Disponible cuando se grabe esta clase]
+
+### Slides
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+```
+
+```{r show-slide-tabs1, echo=FALSE, results="asis"}
+# slide_buttons("/slides/sesion04/sesion04_chalkboard-speaker")
+```
+
+### Talleres
+
+|                              |                                                                                  |
+|----------------------|--------------------------------------------------|
+| Instructivo en línea         | [Aquí]()                                                 |
+| Instructivo con solucionario | [Aquí]()                                                                       |
+| Quarto para alumnos          | [Aquí]()                                                                       |
+| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1Iac8vod_FqXwDDPaOdIBsyw5uUfEx1Lb) |
+
+:::
+
+

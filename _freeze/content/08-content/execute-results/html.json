@@ -1,0 +1,14 @@
+{
+  "hash": "740ce21446fd6f1a1124f5075c4afdae",
+  "result": {
+    "markdown": "---\ntitle: \"Sesión 08\"\ndate: \"2022-10-19\"\n---\n\n\n## Objetivos\n\n[Disponible cuando se grabe esta clase]\n\n## Materiales\n\n::: {.panel-tabset}\n\n### Clase grabada\n\n[Disponible cuando se grabe esta clase]\n\n### Slides\n\n\n\n\n\n\n\n### Talleres\n\n|                              |                                                                                  |\n|----------------------|--------------------------------------------------|\n| Instructivo en línea         | [Aquí]()                                                 |\n| Instructivo con solucionario | [Aquí]()                                                                       |\n| Quarto para alumnos          | [Aquí]()                                                                       |\n| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1WP3nuhVb7104YPsByhkQwl81UMOtH4Mu) |\n\n:::\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

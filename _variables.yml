@@ -1,0 +1,33 @@
+author: Percy Soto-Becerra
+
+lang: es
+
+instructor:
+  name: Percy Soto-Becerra, M.D., M.Sc(c)
+  name_no_title: Percy Soto-Becerra
+  email: percys1991@gmail.com
+  url: "https://github.com/psotob91"
+  twitter: psotob91
+  github: psotob91
+  office: "Virtual: Zoom"
+  contact_policy: >-
+    E-mail y Whatssap son las mejores formas de ponerse en contacto conmigo. Intentaré responder a todos los correos electrónicos relacionados con el curso y los mensajes dentro de las 24 horas (*de verdad*), pero también recuerde que la vida puede ser ajetreada y caótica para todos (¡incluido yo!), así que si no respondo enseguida, no te preocupes!
+  appointment_url: https://calendly.com/psotob91/15-minutos-de-reunion?back=1&month=2022-08
+
+course:
+  number: "AEDSR-IETSI-2023"
+  semester: "Otoño 2023"
+  days: "Miércoles y viernes"
+  time: "6-9 pm"
+  location: "Zoom"
+  dates: "24 de mayo al 23 de junio, 2023"
+  github: "https://github.com/psotob91/curso-r-insnsb"
+  copyright_year: "2023"
+
+university:
+  name: Instituto de Evaluación de Tecnologías en Salud e Investigación -- IETSI, ESSalud
+  url: "https://ietsi.essalud.gob.pe/"
+
+school:
+  name: Dirección de Investigación en Salud
+  url: "https://ietsi.essalud.gob.pe/investigacion-en-salud/"

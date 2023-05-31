@@ -1,0 +1,161 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "!slides/"
+    - "!taller/"
+  resources:
+    - "files/"
+    - "slides/"
+    - "taller/"
+# See https://quarto.org/docs/projects/code-execution.html#freeze
+execute:
+  freeze: auto  # Re-render only when source changes
+
+lang: es
+
+website:
+  title: "Análisis Estadístico de Datos en Salud con R"
+  favicon: logo.png
+  image: logo.png
+  twitter-card: true
+  site-url: https://ietsi-pfc2023-redcap.netlify.app/  
+  open-graph: true
+  repo-url: https://github.com/psotob91/redcap-curso-ietsi2023
+  repo-actions: [edit, issue]
+  page-navigation: true
+  reader-mode: true
+
+  navbar:
+    pinned: true
+    background: "#0880BE"
+    right:
+      - syllabus.qmd
+      - schedule.qmd
+      - text: "Contenido"
+        file: content/index.qmd
+      - text: "Problem Sets"
+        file: assignment/index.qmd
+      - text: "Recursos"
+        file: resource/index.qmd
+      - icon: cloud-fill
+        href: "https://drive.google.com/drive/folders/1CmECgSABnGR35duWw-ygCYjNw3RPmXbz"
+        aria-label: RStudio.cloud
+
+  sidebar:
+    - title: "Información general"
+      style: "docked"
+      search: true
+      background: dark
+      contents:
+        - section: "Información general"
+          contents:
+            - content/index.qmd
+        - section: "Contenido del curso"
+          contents:
+            - text: "0: Día 0"
+              file: content/00-content.qmd
+            - text: "1: Día 1"
+              file: content/01-content.qmd
+              contents: 
+                - text: "Taller 01: Instructivo"
+                  file: taller/taller01/taller01_instructivo.html
+                - text: "Taller 01: Solucionario"
+                  file: taller/taller01/taller01_instructivo_sol.html
+            - text: "2: Día 2"
+              file: content/02-content.qmd
+              contents: 
+                - text: "Taller 02: Instructivo"
+                  file: taller/taller02/taller02_instructivo.html
+                - text: "Taller 02: Solucionario"
+                  file: taller/taller02/taller02_instructivo_sol.html
+            - text: "3: Día 3"
+              file: content/03-content.qmd
+              contents: 
+                - text: "Taller 03: Instructivo"
+                  file: taller/taller03/taller03_instructivo.html
+                - text: "Taller 03: Solucionario"
+                  file: taller/taller03/taller03_instructivo_solno.html
+            - text: "4: Día 4"
+              file: content/04-content.qmd
+              contents: 
+                - text: "Taller 04: Instructivo"
+                  file: taller/taller04/taller04_instructivo.html
+                - text: "Taller 04: Solucionario"
+                  file: taller/taller04/taller04_instructivo_sol.html
+            - text: "5: Día 5"
+              file: content/05-content.qmd
+              contents: 
+                - text: "Taller 05: Instructivo"
+                  file: taller/taller05/taller05_instructivo.html
+                - text: "Taller 05: Solucionario"
+                  file: taller/taller05/taller05_instructivo_sol.html
+            - text: "6: Día 6"
+              file: content/06-content.qmd
+              contents: 
+                - text: "Taller 06: Instructivo"
+                  file: taller/taller06/taller06_instructivo.html
+                - text: "Taller 06: Solucionario"
+                  file: taller/taller06/taller06_instructivo_sol.html            
+            - text: "7: Día 7"
+              file: content/07-content.qmd
+              contents: 
+                - text: "Taller 07: Instructivo"
+                  file: taller/taller07/taller07_instructivo.html
+                - text: "Taller 07: Solucionario"
+                  file: taller/taller07/taller07_instructivo_sol.html
+            - text: "8: Día 8"
+              file: content/08-content.qmd
+              contents: 
+                - text: "Taller 08: Instructivo"
+                  file: taller/taller08/taller08_instructivo.html
+                - text: "Taller 08: Solucionario"
+                  file: taller/taller08/taller08_instructivo_sol.html
+
+    - title: "Examen Final"
+      contents:
+        - section: "Información general"
+          contents:
+            - assignment/index.qmd
+        - section: "Problem sets"
+          contents:
+            - assignment/01-problem-set.qmd
+
+    - title: "Recursos"
+      contents:
+        - section: "Información general"
+          contents:
+            - resource/index.qmd
+            - resource/r-recursos.qmd
+            - resource/style.qmd
+            # - resource/data.qmd
+            # - resource/citations.qmd
+        - section: "Guías"
+          contents:
+            - resource/manual_installR/install.qmd
+          #   - resource/markdown.qmd
+          #   - resource/rmarkdown.qmd
+          #   - resource/unzipping.qmd
+  page-footer:
+    left: |
+      Contenido {{< fa brands creative-commons >}} {{< var course.copyright_year >}} por [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>
+      Todo el contenido está bajo {{< fa brands creative-commons >}}
+      {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
+      [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
+    right: |
+      Hecho con {{< fa brands r-project >}} y [Quarto](https://quarto.org/)<br>
+      [Ver el código fuente en {{< fa brands github >}} GitHub]({{< var course.github >}})
+    border: true
+    background: light
+
+format:
+  html:
+    theme:
+      - litera
+      - html/custom.scss
+    toc: true
+    highlight-style: monokai
+    code-copy: true
+    code-overflow: wrap
+    link-external-newwindow: true
+

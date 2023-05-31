@@ -1,0 +1,16 @@
+{
+  "hash": "f1a22442723ed016ce075c3384a3ec27",
+  "result": {
+    "markdown": "---\ntitle: \"Sesión 02\"\ndate: \"2023-05-26\"\n---\n\n\n## Objetivos\n\nEn esta sesión se buscará abordar los siguientes temas:\n\n-   Estrategias gráficas de inspección/exploración de datos con ggplot().\n\n## Materiales\n\n::: panel-tabset\n\n### Teoría grabada\n\n<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https://player.vimeo.com/video/832066450?h=5883bd33e7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"video2\"></iframe></div><script src=\"https://player.vimeo.com/api/player.js\"></script>\n\n### Práctica grabada\n\nPor fallas técnicas, esta parte de la clase no fue grabada.\n\n### Slides\n\n\n\n\n<p><a class=\"btn btn-danger\" target=\"_blank\" href=\"/slides/sesion02/sesion02.html\"><i class=\"fa-solid fa-arrow-up-right-from-square\"></i> Ver diapositivas en una nueva ventana</a></p>\n\n```{=html}\n<iframe width=\"780\" height=\"500\" src=\"../slides/sesion02/sesion02.html\" title=\"Sesión 2 - Introducción a la visualización de datos con ggplot2\"></iframe>\n```\n\n\n### Talleres\n\n|                              |                                                                                  |\n|----------------------|--------------------------------------------------|\n| Instructivo en línea         | [Aquí](../taller/taller02/taller02_instructivo.html)                                                 |\n| Instructivo con solucionario | [Aquí](../taller/taller02/taller02_instructivo_sol.html)                                                                       |\n| Quarto para alumnos          | [Aquí](../taller/taller02/taller02_alumno.qmd)                                                                       |\n| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1hSjGwo5oI7dwYQJM5WZC2_scNb36PnJ3) |\n\n:::\n",
+    "supporting": [
+      "02-content_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

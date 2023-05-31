@@ -1,0 +1,16 @@
+{
+  "hash": "c554eb4458dbc9a4e2b65872b4ca377e",
+  "result": {
+    "markdown": "---\ntitle: \"Sesión 03\"\ndate: \"2022-10-07\"\n---\n\n\n## Objetivos\n\n[Disponible cuando se grabe esta clase]\n\n\n## Materiales\n\n::: {.panel-tabset}\n\n### Clase grabada\n\n[Disponible cuando se grabe esta clase]\n\n### Slides\n\n\n\n\n<p><a class=\"btn btn-danger\" target=\"_blank\" href=\"/slides/sesion03/sesion03.html\"><i class=\"fa-solid fa-arrow-up-right-from-square\"></i> Ver diapositivas en una nueva ventana</a></p>\n\n```{=html}\n<iframe width=\"780\" height=\"500\" src=\"../slides/sesion03/sesion03.html\" title=\"Sesión 3 - Manejo de datos con dplyr\"></iframe>\n```\n\n\n### Talleres\n\n|                              |                                                                                  |\n|----------------------|--------------------------------------------------|\n| Instructivo en línea         | [Aquí](../taller/taller03/taller03_instructivo.html)                                                 |\n| Instructivo con solucionario | [Aquí](../taller/taller03/taller03_instructivo_sol_no.html)                                                                       |\n| Quarto para alumnos          | [Aquí](../taller/taller03/taller03_alumno.qmd)                                                                       |\n| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/16C3xkQ9i0AnY-FbCPDa3ZwLRXY8XDNyP) |\n\n:::\n\n\n\n",
+    "supporting": [
+      "03-content_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

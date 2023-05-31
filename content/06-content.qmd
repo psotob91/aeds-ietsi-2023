@@ -1,0 +1,42 @@
+---
+title: "Sesión 06"
+date: "2022-10-14"
+---
+
+## Objetivos
+
+[Disponible cuando se grabe esta clase]
+
+
+## Materiales
+
+::: {.panel-tabset}
+
+### Clase grabada
+
+[Disponible cuando se grabe esta clase]
+
+
+### Slides
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+```
+
+```{r show-slide-tabs1, echo=FALSE, results="asis"}
+# slide_buttons("/slides/sesion06/sesion06_chalkboard-speaker")
+```
+
+
+### Talleres
+
+|                              |                                                                                  |
+|----------------------|--------------------------------------------------|
+| Instructivo en línea         | [Aquí]()                                                 |
+| Instructivo con solucionario | [Aquí]()                                                                       |
+| Quarto para alumnos          | [Aquí]()                                                                       |
+| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1b9jkjs4Vp0oFMC53LqIo5D8bA_m5xfqn) |
+
+:::
+
+

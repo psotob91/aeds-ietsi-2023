@@ -1,0 +1,14 @@
+{
+  "hash": "d9a8d9abdce970a86b03378e4cfaf88c",
+  "result": {
+    "markdown": "---\ntitle: \"Sesión 01\"\ndate: \"2023-05-24\"\n---\n\n\n## Objetivos\n\nEn esta sesión se buscará abordar los siguientes temas:\n\n-   Introducción a R y Rstudio.\n\n-   Operaciones usuales.\n\n-   Instalación de paquetes.\n\n-   Administración de entorno.\n\n-   Configuración de proyecto y carpetas.\n\n-   Instalación de paquetes.\n\n-   Importar base de datos.\n\n## Materiales\n\n::: panel-tabset\n### Teoría grabada\n\n<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https://player.vimeo.com/video/830428385?h=b33f23f028&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"D&amp;iacute;a-01-Teor&amp;iacute;a\"></iframe></div><script src=\"https://player.vimeo.com/api/player.js\"></script>\n\n### Práctica grabada\n\n<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https://player.vimeo.com/video/830520105?h=0b6a5e979a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"video1388741605\"></iframe></div><script src=\"https://player.vimeo.com/api/player.js\"></script>\n\n### Slides\n\n\n\n\n<p><a class=\"btn btn-danger\" target=\"_blank\" href=\"/slides/sesion01/sesion01.html\"><i class=\"fa-solid fa-arrow-up-right-from-square\"></i> Ver diapositivas en una nueva ventana</a></p>\n\n```{=html}\n<iframe width=\"780\" height=\"500\" src=\"../slides/sesion01/sesion01.html\" title=\"Sesión 1 - Intro a R\"></iframe>\n```\n\n\n### Talleres\n\n|                              |                                                                                  |\n|---------------------|---------------------------------------------------|\n| Instructivo en línea         | [Aquí](../taller/taller01/taller01_instructivo.html)                                                                       |\n| Instructivo con solucionario | [Aquí](../taller/taller01/taller01_instructivo_sol.html)                                                                       |\n| Quarto para alumnos          | [Aquí](../taller/taller01/taller01_alumno.qmd)                                                                       |\n| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/u/1/folders/1amSEyuniFW72O0atrTh2pdBVWu1QfCP7) |\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,45 @@
+---
+title: "Sesión 03"
+date: "2022-10-07"
+---
+
+## Objetivos
+
+[Disponible cuando se grabe esta clase]
+
+
+## Materiales
+
+::: {.panel-tabset}
+
+### Clase grabada
+
+[Disponible cuando se grabe esta clase]
+
+### Slides
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+```
+
+```{r show-slide-tabs1, echo=FALSE, results="asis"}
+slide_buttons("/slides/sesion03/sesion03")
+```
+
+```{=html}
+<iframe width="780" height="500" src="../slides/sesion03/sesion03.html" title="Sesión 3 - Manejo de datos con dplyr"></iframe>
+```
+
+### Talleres
+
+|                              |                                                                                  |
+|----------------------|--------------------------------------------------|
+| Instructivo en línea         | [Aquí](../taller/taller03/taller03_instructivo.html)                                                 |
+| Instructivo con solucionario | [Aquí](../taller/taller03/taller03_instructivo_sol_no.html)                                                                       |
+| Quarto para alumnos          | [Aquí](../taller/taller03/taller03_alumno.qmd)                                                                       |
+| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/16C3xkQ9i0AnY-FbCPDa3ZwLRXY8XDNyP) |
+
+:::
+
+
+
