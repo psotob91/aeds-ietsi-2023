@@ -12,9 +12,13 @@ date: "2022-10-07"
 
 ::: {.panel-tabset}
 
-### Clase grabada
+### Teoría grabada
 
 [Disponible cuando se grabe esta clase]
+
+### Práctica grabada
+
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/832133534?h=86f219bba3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="video3_practica"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
 ### Slides
 
@@ -35,7 +39,7 @@ slide_buttons("/slides/sesion03/sesion03")
 |                              |                                                                                  |
 |----------------------|--------------------------------------------------|
 | Instructivo en línea         | [Aquí](../taller/taller03/taller03_instructivo.html)                                                 |
-| Instructivo con solucionario | [Aquí](../taller/taller03/taller03_instructivo_sol_no.html)                                                                       |
+| Instructivo con solucionario | [Aquí](../taller/taller03/taller03_instructivo_sol.html)                                                                       |
 | Quarto para alumnos          | [Aquí](../taller/taller03/taller03_alumno.qmd)                                                                       |
 | Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/16C3xkQ9i0AnY-FbCPDa3ZwLRXY8XDNyP) |
 

@@ -75,7 +75,7 @@ website:
                 - text: "Taller 03: Instructivo"
                   file: taller/taller03/taller03_instructivo.html
                 - text: "Taller 03: Solucionario"
-                  file: taller/taller03/taller03_instructivo_solno.html
+                  file: taller/taller03/taller03_instructivo_sol.html
             - text: "4: Día 4"
               file: content/04-content.qmd
               contents: 
