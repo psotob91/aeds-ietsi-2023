@@ -3,7 +3,7 @@ format:
   revealjs: 
     self-contained: true
     theme: [default, theme/theme.scss]
-    footer: "R Aplicado a los Proyectos de Investigación - Sesión 4"
+    footer: "Análisis Estadístico de Datos en Salud 2023 - Día 3"
     logo: img/icon-512-insnsb.jpg
     transition: convex
     background-transition: zoom
@@ -33,31 +33,29 @@ execute:
   echo: true
 filters:
   - reveal-auto-agenda
-  - grouped-tabsets
 auto-agenda:
   bullets: numbered
   heading: Agenda
 ---
-
 \
 
 \
 
 <h1>Sesión 4</h1>
 
-<h2>[Curso: R Aplicado a los Proyectos de Investigación]{.plo}</h2>
+<h2>[Curso: Análisis Estadístico de Datos en Salud]{.plo}</h2>
 
 <hr>
 
 <h3>[Percy Soto-Becerra, M.D., M.Sc(c)]{.negro}</h3>
 
-<h4>[InkaStats Data Science Solutions | Medical Branch]{.negro}</h4>
+<h4>[DIS -- IETSI, EsSalud]{.negro}</h4>
 
-<h4>[2022-10-10]{.negro}</h4>
+<h4>[2023-06-02]{.negro}</h4>
 
 `r fontawesome::fa("github", "black")` &nbsp; [https://github.com/psotob91](https://github.com/psotob91)
 
-![](img/social-image-f22.png){.absolute top=390 left=950 width="600"}
+![](img/logo.png){.absolute top=390 left=950 width="600"}
 
 
 
@@ -91,9 +89,11 @@ pacman::p_load(tidyverse,
 
 datos_fase1 <- read_stata("maca_meno_fase1.dta") %>% 
   as_factor()
+
+datos <- datos_fase1
 ```
 
-# Manejo de datos 2: Categorización y etiquetado de variables
+# Manejo de datos 2: Categorización de variables
 
 ## Creación de variables con [case_when()]{.verde-h3}
 
@@ -185,178 +185,82 @@ datos_fase1 %>%
 
 :::
 
-## Etiquetar variables con [set_var_labels()]{.verde-h3}
 
--   La función [set_var_labels()]{.verde-h3} del paquete [labelled()]{.verde-h3} es muy útil para etiquetar columnas.
 
--   Los datos deben tener metadatos que permitan ser legibles por el ser humano.
+## Recodificar valores de variables con [case_match()]{.verde-h3}
+<hr>
 
-- Primero instalar y cargar paquete:
+- Recodifica los valores de una variable por otros.
 
-```{r}
-library(labelled)
+- Anteriormente se usaba `recode()`, esta función sigue funcionando pero ha sido superada por `case_match()` y es la que se recomienda usar.
+
+-   Crea variables de acuerdo a condiciones complejas
+
+```r
+case_match(
+  variable, 
+  valor_antiguo1 ~ valor_nuevo1, 
+  c(valor_antiguo2, valor_antiguo3) ~ valor_nuevo2, 
+  valor_antiguo3 ~ valor_nuevo3
+  )
 ```
 
--  Es preferible usar esta función al final de todo el proceso de limpieza de datos.
+## Recodificar valores de variables con [case_match()]{.verde-h3}
+<hr>
+
+- Toda modificación de variables en dplyr ocurre por mutate; por tanto, [case_match()]{.verde-h3}se utiliza dentro de un mutate
+
+```r
+datos %>% 
+  mutate(
+    variable = case_match(
+      variable, 
+      valor_antiguo1 ~ valor_nuevo1,
+      c(valor_antiguo2, valor_antiguo3) ~ valor_nuevo2, 
+      valor_antiguo3 ~ valor_nuevo3
+    )
+  )
+```
+
+
+
+## [case_match()]{.verde-h3} en acción
+<hr>
 
 :::: {.columns}
 
-::: {.column width='40%'}
+::: {.column width='50%'}
 
-[Larga]{.verde-h3}
-
-```r
-set_var_labels(.data = DATA, ...)
-```
-
-[Abreviada]{.verde-h3}
-
-```r
-set_var_labels(DATA, ...)
-```
-
-[Se estila usar %>%]{.verde-h3}
-
-```r
-DATA %>% 
-  set_var_labels(...)
-```
-
-:::
-
-::: {.column width='5%'}
-
-:::
-
-::: {.column width='55%'}
+- Veamos la variable married2:
 
 ```{r}
-#| echo: false
-datos_var_lab <- 
-  data.frame(
-    Argumento = c(".data", "..."), 
-    Descripción = c("Data frame o extensión de data frame (por ejemplo, tibble).", 
-             "variable = 'nueva etiqueta'"))
-
-datos_var_lab %>% 
-  kbl(booktabs = T) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-                full_width = T)
+datos_fase1 |> 
+  select(married2) |> 
+  head()
 ```
 
-::: 
+:::
+
+::: {.column width='50%'}
+
+```{r}
+datos_fase1 %>% 
+  mutate(married2 = case_match(married2, 
+                           "Without couple" ~ "Sin pareja", 
+                           "With couple" ~ "Con pareja"))
+
+datos_fase1 |> 
+  select(married2) |> 
+  head()
+```
+
+:::
 
 ::::
 
-## [set_var_labels()]{.verde-h3} en acción
 
-::: {.panel-tabset}
+- Cambiar los valores de married2 del inglés al español:
 
-### Sin etiqueta de variable
-
-- ¿Qué significan `pas`, `pad` y `pam`?
-
-- Difícil de saber sin una etiqueta
-
-```{r, echo=FALSE, out.width="40%"}
-knitr::include_graphics("img/sin-etiqueta.png")
-```
-
-### Con etiqueta de variable
-
-```{r}
-#| echo: false
-datos <- data.frame(
-  pas = c(122.3, 142.1, 100.2), 
-  pad = c(74, 81, 79), 
-  pam = c(90.1, 101.37, 86.06)
-)
-```
-
-- Usando [set_variable_labels()]{.verde-h3}
-
-```{r}
-datos2 <- datos %>% 
-  set_variable_labels(
-    pam = "Presión Arterial Media", 
-    pas = "Presión Arterial Sistólica", 
-    pad = "Presión Arterial Diastólica"
-  )
-```
-
-```{r, echo=FALSE, out.width="70%"}
-knitr::include_graphics("img/con-etiqueta.png")
-```
-
-:::
-
-## `r fontawesome::fa("laptop-code", "white")` Nuestro turno {background-color="#000000"}
-<hr>
-
-\
-
-- Descargue la carpeta denominada [taller04]{.verde-h3} disponible en la carpeta compartida.
-
-- Abra el proyecto denominado [taller04.Rproj]{.verde-h3}
-
-- Complete y ejecute el código faltante en los chunk de código de la PRIMERA PARTE.
-
-- Una vez culmine todo el proceso, renderice el archivo .qmd.
-
-\
-\
-\  
-
-## `r fontawesome::fa("mug-saucer", "white")` Hagamos una pausa {background-color="#00817E"}
-<hr>
-
-::: r-fit-text
-
-<center>
-
-Tomemos un descanso de `5 minutos`...
-
-Estire las piernas `r fontawesome::fa("person-walking", "white")`... 
-
-Deje de ver las pantallas `r fontawesome::fa("laptop", "white")`...
-
-... cualquier `r fontawesome::fa("laptop", "white")`, las del celular `r fontawesome::fa("mobile", "white")` también.
-
-</center>
-
-:::
-
-```{r}
-#| echo: false
-library(countdown)
-countdown_timer <- function(
-    minutes = 1, 
-    play_sound = TRUE, 
-    font_size = "2em", 
-    ...
-) {
-  countdown(
-    minutes = minutes,
-    # Fanfare when it's over
-    play_sound = play_sound,
-    # Set timer theme to match solarized colors
-    color_border              = "#404041",
-    color_text                = "white",
-    color_background = "#000000",
-    color_running_background  = "#72994E",
-    color_running_text        = "white",
-    color_finished_background = "#EE6331",
-    color_finished_text       = "white",
-    font_size = font_size,
-    ...
-  )
-}
-```
-
-```{r}
-#| echo: false
-countdown_timer(5)
-```
 
 
 # AID / AED en R
@@ -612,7 +516,8 @@ datos_perdidos_comun
 
 ```{r}
 datos_perdidos_comun %>% 
-  na_if(list(edad = -999, diabetes = "N/A")) -> datos_perdidos_limpia
+  mutate(edad = na_if(edad, -999), 
+         diabetes = na_if(diabetes, "N/A")) -> datos_perdidos_limpia
 
 datos_perdidos_limpia
 ```
@@ -642,7 +547,7 @@ skim(datos)
 describe(datos)
 ```
 
-### Gráficos R base
+### Gráficos de cajas
 
 - El `gráfico de cajas` nos muestra la disrtibución de la variable numérica en termino de sus cuantiles.
 
@@ -657,7 +562,9 @@ describe(datos)
 ::: {.column width='50%'}
 
 ```{r}
-boxplot(datos$peso_final)
+datos |> 
+  ggplot(aes(y = peso_final)) + 
+  geom_boxplot()
 ```
 
 :::
@@ -665,7 +572,9 @@ boxplot(datos$peso_final)
 ::: {.column width='50%'}
 
 ```{r}
-boxplot(datos$peso_utero)
+datos |> 
+  ggplot(aes(y = peso_utero)) + 
+  geom_boxplot()
 ```
 
 :::
@@ -768,8 +677,8 @@ datos_extremo %>%
 
 datos_extremo_recomiss
 ```
-:::
 
+:::
 
 ## {.scrollable}
 
@@ -839,22 +748,25 @@ datos %>%
 
 :::
 
-## `r fontawesome::fa("laptop-code", "white")` Nuestro turno {background-color="#000000"}
+
+## `r fontawesome::fa("mug-saucer", "white")` Hagamos una pausa {background-color="#00817E"}
 <hr>
 
-\
+::: r-fit-text
 
-- Descargue la carpeta denominada [taller04]{.verde-h3} disponible en la carpeta compartida.
+<center>
 
-- Abra el proyecto denominado [taller04.Rproj]{.verde-h3}
+Tomemos un descanso de `5 minutos`...
 
-- Complete y ejecute el código faltante en los chunk de código de la SEGUNDA PARTE.
+Estire las piernas `r fontawesome::fa("person-walking", "white")`... 
 
-- Una vez culmine todo el proceso, renderice el archivo .qmd.
+Deje de ver las pantallas `r fontawesome::fa("laptop", "white")`...
 
-\
-\
-\  
+... cualquier `r fontawesome::fa("laptop", "white")`, las del celular `r fontawesome::fa("mobile", "white")` también.
+
+</center>
+
+:::
 
 ```{r}
 #| echo: false
@@ -883,11 +795,10 @@ countdown_timer <- function(
 }
 ```
 
-```{R}
+```{r}
 #| echo: false
-countdown_timer(10)
+countdown_timer(5)
 ```
-
 
 ## 
 

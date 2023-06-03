@@ -1,8 +1,10 @@
 {
-  "hash": "17a4d430ee14c17688ccd4774044e5ff",
+  "hash": "3499b4f8d4667713514b89714d35b741",
   "result": {
-    "markdown": "---\ntitle: \"Sesión 04\"\ndate: \"2022-10-10\"\n---\n\n\n## Objetivos\n\n[Disponible cuando se grabe esta clase]\n\n## Materiales\n\n::: {.panel-tabset}\n\n### Clase grabada\n\n[Disponible cuando se grabe esta clase]\n\n### Slides\n\n\n\n\n\n\n\n### Talleres\n\n|                              |                                                                                  |\n|----------------------|--------------------------------------------------|\n| Instructivo en línea         | [Aquí]()                                                 |\n| Instructivo con solucionario | [Aquí]()                                                                       |\n| Quarto para alumnos          | [Aquí]()                                                                       |\n| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1Iac8vod_FqXwDDPaOdIBsyw5uUfEx1Lb) |\n\n:::\n\n\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Sesión 04\"\ndate: \"2022-10-10\"\n---\n\n\n## Objetivos\n\n[Disponible cuando se grabe esta clase]\n\n## Materiales\n\n::: {.panel-tabset}\n\n### Clase grabada\n\n[Disponible cuando se grabe esta clase]\n\n### Slides\n\n\n\n\n<p><a class=\"btn btn-danger\" target=\"_blank\" href=\"/slides/sesion04/sesion04.html\"><i class=\"fa-solid fa-arrow-up-right-from-square\"></i> Ver diapositivas en una nueva ventana</a></p>\n\n```{=html}\n<iframe width=\"780\" height=\"500\" src=\"../slides/sesion04/sesion04.html\" title=\"Sesión 4 - Manejo de datos 2, AID/AED con R\"></iframe>\n```\n\n\n### Talleres\n\n|                              |                                                                                  |\n|----------------------|--------------------------------------------------|\n| Instructivo en línea         | [Aquí](../taller/taller04/taller04_instructivo.html)                                                 |\n| Instructivo con solucionario | [Aquí](../taller/taller04/taller04_instructivo_solno.html)                                                                       |\n| Quarto para alumnos          | [Aquí](../taller/taller04/taller04_alumno.qmd)                                                                       |\n| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1Iac8vod_FqXwDDPaOdIBsyw5uUfEx1Lb) |\n\n:::\n\n\n",
+    "supporting": [
+      "04-content_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
