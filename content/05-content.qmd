@@ -1,6 +1,6 @@
 ---
 title: "Sesión 05"
-date: "2022-10-12"
+date: "2023-06-09"
 ---
 
 ## Objetivos
@@ -23,18 +23,21 @@ source(here::here("R", "slide-things.R"))
 ```
 
 ```{r show-slide-tabs1, echo=FALSE, results="asis"}
-# slide_buttons("/slides/sesion05/sesion05_chalkboard-speaker")
+slide_buttons("/slides/sesion05/sesion05")
+```
+
+```{=html}
+<iframe width="780" height="500" src="../slides/sesion05/sesion05.html" title="Sesión 5 - Análisis Descriptivo con R"></iframe>
 ```
 
 ### Talleres
 
 |                              |                                                                                  |
 |----------------------|--------------------------------------------------|
-| Instructivo en línea         | [Aquí]()                                                 |
-| Instructivo con solucionario | [Aquí]()                                                                       |
-| Quarto para alumnos          | [Aquí]()                                                                       |
+| Instructivo en línea         | [Aquí](../taller/taller05/taller05_instructivo.html)                                                 |
+| Instructivo con solucionario | [Aquí](../taller/taller05/taller05_instructivo_solno.html)                                                                       |
+| Quarto para alumnos          | [Aquí](../taller/taller05/taller05_alumno.qmd)                                                                       |
 | Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1u5BxnIIDTEF4MNqJJQv_QE8-RVoqgxrk) |
 
 :::
-
 

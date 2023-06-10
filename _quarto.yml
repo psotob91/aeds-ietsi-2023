@@ -89,7 +89,7 @@ website:
                 - text: "Taller 05: Instructivo"
                   file: taller/taller05/taller05_instructivo.html
                 - text: "Taller 05: Solucionario"
-                  file: taller/taller05/taller05_instructivo_sol.html
+                  file: taller/taller05/taller05_instructivo_solno.html
             - text: "6: Día 6"
               file: content/06-content.qmd
               contents: 

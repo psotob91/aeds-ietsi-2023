@@ -1,10 +1,10 @@
 ---
 format: 
   revealjs: 
-    # self-contained: true
+    self-contained: false
     theme: [default, theme/theme.scss]
-    footer: "R Aplicado a los Proyectos de Investigación - Sesión 5"
-    logo: img/icon-512-insnsb.jpg
+    footer: "Análisis Estadístico de Datos en Salud 2023 - Día 5"
+    logo: img/logo.png
     transition: convex
     background-transition: zoom
     incremental: false
@@ -37,26 +37,26 @@ auto-agenda:
   bullets: numbered
   heading: Agenda
 ---
-
 \
 
 \
 
 <h1>Sesión 5</h1>
 
-<h2>[Curso: R Aplicado a los Proyectos de Investigación]{.verde-h3}</h2>
+<h2>[Curso: Análisis Estadístico de Datos en Salud]{.plo}</h2>
 
 <hr>
 
 <h3>[Percy Soto-Becerra, M.D., M.Sc(c)]{.negro}</h3>
 
-<h4>[InkaStats Data Science Solutions | Medical Branch]{.negro}</h4>
+<h4>[DIS -- IETSI, EsSalud]{.negro}</h4>
 
-<h4>[2022-10-12]{.negro}</h4>
+<h4>[2023-06-09]{.negro}</h4>
 
 `r fontawesome::fa("github", "black")` &nbsp; [https://github.com/psotob91](https://github.com/psotob91)
 
-![](img/social-image-f22.png){.absolute top=390 left=950 width="600"}
+![](img/logo.png){.absolute top=390 left=950 width="600"}
+
 
 ```{r}
 #| echo: false
@@ -1515,79 +1515,9 @@ datos %>%
 
 :::
 
-
-## `r fontawesome::fa("laptop-code", "white")` Nuestro turno {background-color="#000000"}
-<hr>
-
-\
-
-- Descargue la carpeta denominada [taller05]{.verde-h3} disponible en la carpeta compartida.
-
-- Abra el proyecto denominado [taller05.Rproj]{.verde-h3}
-
-- Complete y ejecute el código faltante en los chunk de código de la PRIMERA PARTE.
-
-- Una vez culmine todo el proceso, renderice el archivo .qmd.
-
-\
-\
-\  
-
-## `r fontawesome::fa("mug-saucer", "white")` Hagamos una pausa {background-color="#00817E"}
-<hr>
-
-::: r-fit-text
-
-<center>
-
-Tomemos un descanso de `5 minutos`...
-
-Estire las piernas `r fontawesome::fa("person-walking", "white")`... 
-
-Deje de ver las pantallas `r fontawesome::fa("laptop", "white")`...
-
-... cualquier `r fontawesome::fa("laptop", "white")`, las del celular `r fontawesome::fa("mobile", "white")` también.
-
-</center>
-
-:::
-
-```{r}
-#| echo: false
-library(countdown)
-countdown_timer <- function(
-    minutes = 1, 
-    play_sound = TRUE, 
-    font_size = "2em", 
-    ...
-) {
-  countdown(
-    minutes = minutes,
-    # Fanfare when it's over
-    play_sound = play_sound,
-    # Set timer theme to match solarized colors
-    color_border              = "#404041",
-    color_text                = "white",
-    color_background = "#000000",
-    color_running_background  = "#72994E",
-    color_running_text        = "white",
-    color_finished_background = "#EE6331",
-    color_finished_text       = "white",
-    font_size = font_size,
-    ...
-  )
-}
-```
-
-```{r}
-#| echo: false
-countdown_timer(5)
-```
-
 # Análisis descriptivo de variables categóricas 
 
-
-## Medidas de frecuencia
+## Medidas de frecuencia {.scrollable}
 
 :::: {.columns}
 
@@ -1639,7 +1569,7 @@ countdown_timer(5)
 
 ::::
 
-## Frecuencias Relativas en Bioestadística y Epi Clínica
+## Frecuencias Relativas en Bioestadística y Epi Clínica {.scrollable}
 
 ::: {.panel-tabset}
 
@@ -2105,7 +2035,7 @@ Más información sobre el análisis de variables categóricas con...
 
 ## 
 
-## Análisis descriptivo de variable categórica - recomendaciones{.scrollable}
+## Análisis descriptivo de variable categórica - recomendaciones {.scrollable}
 
 :::: {.columns}
 
@@ -2148,1586 +2078,1706 @@ bd_inmuno %>%
 
 ::::
 
-# Tablas Reproducible
 
-## ¿Cómo hacer que un análisis de datos sea reproducible? {.scrollable}
+# Gráficos de variables numéricas con R
 
--   No cree la tabla "manualmente".
+## Intro sobre gráficos de variables numéricas {.scrollable}
 
--   [Genere]{.verde-h3} las [tablas]{.verde-h3} con [código]{.verde-h3}: 
+<br/>
 
-    -   Es [reproducible]{.verde-h3}. 
-    -   Menos propenso a error de digitación o *lapsus calamis*. 
-    -   Han habido retracciones de ensayos clínicos por errores de tipeo!! 
-    -   Es más rápido, ahorrarás tiempo!! 
+- Permiten visualizar la distribución de la variable numérica en la muestra de datos.
 
--   A la [tabla descriptiva]{.verde-h3} menudo se la conoce como tablas [tipo 1]{.verde-h3}.
+- Hay varios tipos de gráficos que pueden hacerse para inspeccionar la variable numérica.
 
-    -   Puede haber más de una, no hay reglas, solo buenos o malos criterios para presentar resultados. 
+- Hay que distinguir dos tipos de gráficos:
+
+    + Los de inspección: Deben ser rápidos de generar y leer, aunque no sean tan personalizables o elegantes. Usar funciones `wrapper()` de otros paquetes ayuda mucho. Usaremos [{ggpubr}]{.plo}
     
--   Hay muchos paquetes: [{flextable}]{.verde-h3}, [{gt}]{.verde-h3},[{huxtable}]{.verde-h3}, [{kableExtra}]{.verde-h3}, [{kable}]{.verde-h3}, etc.
--   Sugerimos [{gtsummary}]{.verde-h3} para comenzar:
-
-[[https://www.danieldsjoberg.com/gtsummary/](https://www.danieldsjoberg.com/gtsummary/)]{.big-text1}
-
-
-## Tabla decriptiva reproducible con {gtsummary} 
-
--   Permite [crear tablas]{.verde-h3} en formato de [revistas biomédicas]{.verde-h3}.
-
--   Función [tbl_summary()]{.verde-h3} para tablas descriptivas univariadas y comparativas (bivariadas)
-
-<center>![](img/tbl_summary_demo1.gif)</center>
-
-<center>[<https://www.danieldsjoberg.com/gtsummary/>]{.big-text1}</center>
-
-## Los datos que usaremos  {.scrollable}
-
-:::: {.columns}
-
-::: {.column width='70%'}
-
-- Usaremos los datos simulados de un ensayo clínico para evaluar la seguridad de un suplemento en outcomes clinico y fisiologicos de mujeres con menopausia:
-
-```{r}
-#| echo: false
-library(haven)
-datos <- read_stata("maca_meno_fase1.dta") %>% 
-  as_factor() %>% 
-  select(id, time, treat, age, race, married2, procedence, weight, height, e2) %>% 
-  mutate(treated = case_when(
-    treat == "Placebo" ~ 0, 
-    treat %in% c("Dosis 1", "Dosis 2") ~ 1, 
-    TRUE ~ as.numeric(NA)
-  )) %>% 
-  set_variable_labels(treated = "Treated") %>% 
-  select(id, time, treat, treated, age, race, married2, procedence, weight, height, e2)
-```
-
-```{r}
-#| echo: false
-head(datos) %>% 
-  kbl() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-                full_width = T,
-                font_size = 30) 
-  # kable_paper("striped", full_width = F) %>%               
-  # column_spec(1, bold = T) %>%
-  # collapse_rows(columns = 1:2, valign = "top")  %>% 
-  # row_spec(0, background = "black", color = "white", bold = TRUE) %>% 
-  # row_spec(c(1, 3:5), background = "white", color = "black", bold = TRUE) %>% 
-  # row_spec(c(2, 6, 7), background = "gray", color = "white", bold = TRUE)
-```
-
-:::
-
-::: {.column width='30%'}
-
-- Las etiquetas de cada variable son:
-
-```{r}
-#| echo: false
-#| label: 'describe-small-trial'
-tibble(
-  Variable = names(datos),
-  Label = map_chr(Variable, ~attr(datos[[.x]], "label"))
-  ) %>%  
-  kbl() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-                full_width = T,
-                font_size = 30) 
-```
-
-:::
-
-::::
-
-# tbl_summary() paso a paso
-
-## tbl_summary() básico  {.scrollable}
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-- Seleccionar las variables que desea reportar con función [select()]{.verde-h3}, luego usar [tbl_summary()]{.verde-h3}:
-
-```r
-library(gtsummary)
-datos %>% 
-  select(age, race, married2, e2) %>% 
-  tbl_summary()
-```
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-library(gtsummary)
-datos %>% 
-  select(age, treated, married2, e2) %>% 
-  tbl_summary() %>% 
-  as_gt() %>% 
-  gtsave("tab1.png", "img/")
-
-knitr::include_graphics("img/tab1.png")
-```
-
-:::
-
-::: {.column width='50%'}
-
-- Cuarto tipo de resumenes: [continuous]{.verde-h3}, [continuos2]{.verde-h3}, [categorical]{.verde-h3} y [dichotomous]{.verde-h3}
-
-- Por defecto, los estadísticos son reportadas como [mediana]{.verde-h3} ([percentil 25]{.verde-h3}, [percentil 75]{.verde-h3}) para variables numéricas y [n (%)]{.verde-h3} para variables categóricas/dicotómicas.
-
-- Las variables codificadas como [0]{.verde-h3} / [1]{.verde-h3}, [TRUE]{.verde-h3} / [FALSE]{.verde-h3} o [Yes]{.verde-h3} / [No]{.verde-h3} son tratadas como dicotómicas.
-
-- Los valores [NA]{.verde-h3} se listan como "Unknown
-
-- Los atributos de etiqueta se imprimen por defecto.
-
-- Uno puede realizar más personalizaciones a la tabla.
-
-:::
-
-::::
-
-
-## Personalización del resultado de tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary()
-```
-
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary() %>% 
-  as_gt() %>% 
-  gtsave("tab2.png", "img/")
-
-knitr::include_graphics("img/tab2.png")
-```
-
-:::
-
-::::
-
-## Personalización del resultado de tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous")
-  )
-```
-
-- [type]{.verde-h3}: Especifica el tipo de variable para el resumen 
-
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous")
-  ) %>% 
-  as_gt() %>% 
-  gtsave("tab3.png", "img/")
-
-knitr::include_graphics("img/tab3.png")
-```
-
-:::
-
-::::
-
-## Personalización del resultado de tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    statistic = list(
-      age ~ "{mean} ({sd})", 
-      married2 ~ "{n}  / {N} ({p}%)"
-    )
-  )
-```
-
-- [type]{.verde-h3}: Especifica el tipo de variable para el resumen.
-
-- [statistic]{.verde-h3}: Personaliza los estadísticos reportados.
-
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-# datos %>% 
-#   select(age, treated, married2, height, e2) %>% 
-#   tbl_summary(
-#     type = list(height ~ "continuous"), 
-#     statistic = list(
-#       age ~ "{mean} ({sd})", 
-#       married2 ~ "{n}  / {N} ({p}%)"
-#     )
-#   )   %>% as_gt() %>% 
-# gtsave("tab4.png", "img/")
-
-knitr::include_graphics("img/tab4.png")
-```
-
-:::
-
-::::
-
-## Personalización del resultado de tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    statistic = list(
-      c(age, height) ~ "{mean} ({sd})", 
-      c(married2, treated) ~ "{n}  / {N} ({p}%)"
-    )
-  )
-```
-
-- [type]{.verde-h3}: Especifica el tipo de variable para el resumen.
-
-- [statistic]{.verde-h3}: Personaliza los estadísticos reportados.
-
-    + Usar [c()]{.verde-h3} para varias variables.
-
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-# datos %>% 
-#   select(age, treated, married2, height, e2) %>% 
-#   tbl_summary(
-#     type = list(height ~ "continuous"), 
-#     statistic = list(
-#       c(age, height) ~ "{mean} ({sd})", 
-#       c(married2, treated) ~ "{n}  / {N} ({p}%)"
-#     )
-#   ) %>% 
-#   as_gt() %>% 
-#   gtsave("tab5.png", "img/")
-
-knitr::include_graphics("img/tab5.png")
-```
-
-:::
-
-::::
-
-## Personalización del resultado de tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(c(age, height) ~ "continuous2"), 
-    statistic = list(
-      c(age, height) ~ c("{mean} ({sd})", 
-                         "{median} ({p25} - {p75})"), 
-      c(married2, treated) ~ "{n}  / {N} ({p}%)"
-    )
-  )
-```
-
-- [type]{.verde-h3}: Especifica el tipo de variable para el resumen.
-
-- [statistic]{.verde-h3}: Personaliza los estadísticos reportados.
-
-    + Usar [c()]{.verde-h3} para varias variables.
+    + Los de reporte: Deben ser elegantes y super personalizados., aunque se demoren en generarse. ¡[{ggplot2}]{.plo} es fenomenal para estos!
     
-    + Si queremos reportar más estadísticos en variables numéricas usamos [continuous2]{.verde-h3}
 
-:::
+## Histogramas de frecuencias {.scrollable}
 
-::: {.column width='50%'}
+::: {.panel-tabset}
 
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-# datos %>% 
-#   select(age, treated, married2, height, e2) %>% 
-#   tbl_summary(
-#     type = list(c(age, height) ~ "continuous2"), 
-#     statistic = list(
-#       c(age, height) ~ c("{mean} ({sd})", 
-#                          "{median} ({p25} - {p75})"), 
-#       c(married2, treated) ~ "{n}  / {N} ({p}%)"
-#     )
-#   ) %>% 
-#   as_gt() %>% 
-#   gtsave("tab6.png", "img/")
+### ggplot2
 
-knitr::include_graphics("img/tab6.png")
-```
-
-:::
-
-::::
-
-## Personalización del resultado de tbl_summary() {.scrollable auto-animate="true"} 
+>Podemos crear histogramas usando la geometría `geom_histogram()`.
 
 :::: {.columns}
 
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(c(age, height) ~ "continuous2"), 
-    statistic = list(
-      c(age, height) ~ c("{mean} ({sd})", 
-                         "{median} ({p25} - {p75})", 
-                         "{min} - {max}"), 
-      c(married2, treated) ~ "{n}  / {N} ({p}%)"
-    )
-  )
-```
-
-- [type]{.verde-h3}: Especifica el tipo de variable para el resumen.
-
-- [statistic]{.verde-h3}: Personaliza los estadísticos reportados.
-
-    + Usar [c()]{.verde-h3} para varias variables.
-    
-    + Si queremos reportar más estadísticos en variables numéricas usamos [continuous2]{.verde-h3}
-    
-        + Podemos ponerle cuantos estadísticos queramos.
-
-:::
-
-::: {.column width='50%'}
+::: {.column width='40%'}
 
 ```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-# datos %>% 
-#   select(age, treated, married2, height, e2) %>% 
-#   tbl_summary(
-#     type = list(c(age, height) ~ "continuous2"), 
-#     statistic = list(
-#       c(age, height) ~ c("{mean} ({sd})", 
-#                          "{median} ({p25} - {p75})", 
-#                          "{min} - {max}"), 
-#       c(married2, treated) ~ "{n}  / {N} ({p}%)"
-#     )
-#   ) %>% 
-#   as_gt() %>% 
-#   gtsave("tab7.png", "img/")
-
-knitr::include_graphics("img/tab7.png")
+#| code-line-numbers: "1|2|3|"
+#| eval: false
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram()
 ```
 
 :::
 
-::::
-
-## Personalización del resultado de tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(c(age, height) ~ "continuous2"), 
-    statistic = list(
-      c(age, height) ~ c("{mean} ({sd})", "{min} - {max}"), 
-      c(e2) ~ c("{median} ({p25} - {p75})",
-                "{min} - {max}"),       
-      c(married2, treated) ~ "{n}  / {N} ({p}%)"
-    )
-  ) 
-```
-
-- [type]{.verde-h3}: Especifica el tipo de variable para el resumen.
-
-- [statistic]{.verde-h3}: Personaliza los estadísticos reportados.
-
-    + Usar [c()]{.verde-h3} para varias variables.
-    
-    + Si queremos reportar más estadísticos en variables numéricas usamos [continuous2]{.verde-h3}
-    
-        + Podemos ponerle cuantos estadísticos queramos.
-        
-        + Podemos tener diferentes combinaciones de estadísticos.
-
-:::
-
-::: {.column width='50%'}
+::: {.column width='60%'}
 
 ```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-# datos %>% 
-#   select(age, treated, married2, height, e2) %>% 
-#   tbl_summary(
-#     type = list(c(age, height, e2) ~ "continuous2"), 
-#     statistic = list(
-#       c(age, height) ~ c("{mean} ({sd})", 
-#                          "{min} - {max}"), 
-#       c(e2) ~ c("{median} ({p25} - {p75})",
-#                 "{min} - {max}"),       
-#       c(married2, treated) ~ "{n}  / {N} ({p}%)"
-#     )
-#   ) %>% 
-#   as_gt() %>% 
-#   gtsave("tab8.png", "img/")
-
-knitr::include_graphics("img/tab8.png")
-```
-
-:::
-
-::::
-
-## Personalización del resultado de tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(c(age, height, e2) ~ "continuous2"), 
-    statistic = list(
-      c(age, height) ~ c("{mean} ({sd})", "{min} - {max}"), 
-      c(e2) ~ c("{median} ({p25} - {p75})",
-                "{min} - {max}"),       
-      c(married2, treated) ~ "{n}  / {N} ({p}%)"
-    ), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    )
-  )
-```
-
-- [type]{.verde-h3}: Especifica el tipo de variable para el resumen.
-
-- [statistic]{.verde-h3}: Personaliza los estadísticos reportados.
-
-- [label]{.verde-h3}: Cambia o personaliza la etiqueta de la variable.
-
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-# datos %>% 
-#   select(age, treated, married2, height, e2) %>% 
-#   tbl_summary(
-#     type = list(c(age, height, e2) ~ "continuous2"), 
-#     statistic = list(
-#       c(age, height) ~ c("{mean} ({sd})", 
-#                          "{min} - {max}"), 
-#       c(e2) ~ c("{median} ({p25} - {p75})",
-#                 "{min} - {max}"),       
-#       c(married2, treated) ~ "{n}  / {N} ({p}%)"
-#     ), 
-#     label = list(
-#       treated ~ "Treated with supplement", 
-#       e2 ~ "Estradiol, UI",
-#       married2 ~ "Marital status"
-#     )
-#   ) %>% 
-#   as_gt() %>% 
-#   gtsave("tab9.png", "img/")
-
-knitr::include_graphics("img/tab9.png")
-```
-
-:::
-
-::::
-
-
-## Personalización del resultado de tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(c(age, height, e2) ~ "continuous2"), 
-    statistic = list(
-      c(age, height) ~ c("{mean} ({sd})", "{min} - {max}"), 
-      c(e2) ~ c("{median} ({p25} - {p75})",
-                "{min} - {max}"),       
-      c(married2, treated) ~ "{n}  / {N} ({p}%)"
-    ), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    digits = list(
-      c(age) ~ 1, c(height, e2) ~ 2, c(married2, treated) ~ 1
-    )
-  )
-```
-
-- [type]{.verde-h3}: Especifica el tipo de variable para el resumen.
-
-- [statistic]{.verde-h3}: Personaliza los estadísticos reportados.
-
-- [label]{.verde-h3}: Cambia o personaliza la etiqueta de la variable.
-
-- [digit]{.verde-h3}: Especifica el número de decimales de redondeo.
-
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-# datos %>% 
-#   select(age, treated, married2, height, e2) %>% 
-#   tbl_summary(
-#     type = list(c(age, height, e2) ~ "continuous2"), 
-#     statistic = list(
-#       c(age, height) ~ c("{mean} ({sd})", 
-#                          "{min} - {max}"), 
-#       c(e2) ~ c("{median} ({p25} - {p75})",
-#                 "{min} - {max}"),       
-#       c(married2, treated) ~ "{n}  / {N} ({p}%)"
-#     ), 
-#     label = list(
-#       treated ~ "Treated with supplement", 
-#       e2 ~ "Estradiol, UI",
-#       married2 ~ "Marital status"
-#     ), 
-#     digits = list(
-#       c(age) ~ 1, c(height, e2) ~ 2, 
-#       c(married2, treated) ~ 1
-#     )
-#   ) %>% 
-#   as_gt() %>% 
-#   gtsave("tab10.png", "img/")
-
-knitr::include_graphics("img/tab10.png")
-```
-
-:::
-
-::::
-
-## Reporte de datos perdidos con tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(c(age, height, e2) ~ "continuous2"), 
-    statistic = list(
-      c(age, height) ~ c("{mean} ({sd})", "{min} - {max}"), 
-      c(e2) ~ c("{median} ({p25} - {p75})", "{min} - {max}"),       
-      c(married2, treated) ~ "{n}  / {N} ({p}%)"
-    ), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    digits = list(
-      c(age) ~ 1, c(height, e2) ~ 2, c(married2, treated) ~ 1
-    ), 
-    missing_text = "Missing data"
-  ) 
-```
-
-- [misisng_text]{.verde-h3}: Permite editar la etiqueta de missing ([Unknown]{.verde-h3} por defecto).
-
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-# datos %>% 
-#   select(age, treated, married2, height, e2) %>% 
-#   tbl_summary(
-#     type = list(c(age, height, e2) ~ "continuous2"), 
-#     statistic = list(
-#       c(age, height) ~ c("{mean} ({sd})", "{min} - {max}"), 
-#       c(e2) ~ c("{median} ({p25} - {p75})", "{min} - {max}"),       
-#       c(married2, treated) ~ "{n}  / {N} ({p}%)"
-#     ), 
-#     label = list(
-#       treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-#       married2 ~ "Marital status"
-#     ), 
-#     digits = list(
-#       c(age) ~ 1, c(height, e2) ~ 2, c(married2, treated) ~ 1
-#     ), 
-#     missing_text = "Missing data"
-#   ) %>% 
-#   as_gt() %>% 
-#   gtsave("tab11.png", "img/")
-
-knitr::include_graphics("img/tab11.png")
-```
-
-:::
-
-::::
-
-## Reporte de datos perdidos con tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(c(age, height, e2) ~ "continuous2"), 
-    statistic = list(
-      c(age, height) ~ c("{mean} ({sd})", "{min} - {max}"), 
-      c(e2) ~ c("{median} ({p25} - {p75})", "{min} - {max}"),       
-      c(married2, treated) ~ "{n}  / {N} ({p}%)"
-    ), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    digits = list(
-      c(age) ~ 1, c(height, e2) ~ 2, c(married2, treated) ~ 1
-    ), 
-    missing = "always", missing_text = "Missing data"
-  )  
-```
-
-- [misisng_text]{.verde-h3}: Permite editar la etiqueta de missing ([Unknown]{.verde-h3} por defecto).
-
-- [missing]{.verde-h3}: Por defecto se presentan los datos perdidos solo si la variable los tiene ["ifany"]{.verde-h3}.
-
-    + [missing = "always"]{.verde-h3} siempre presenta datos perdidos.
-
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-#| code-overflow: wrap
-# datos %>% 
-#   select(age, treated, married2, height, e2) %>% 
-#   tbl_summary(
-#     type = list(c(age, height, e2) ~ "continuous2"), 
-#     statistic = list(
-#       c(age, height) ~ c("{mean} ({sd})", "{min} - {max}"), 
-#       c(e2) ~ c("{median} ({p25} - {p75})", "{min} - {max}"),       
-#       c(married2, treated) ~ "{n}  / {N} ({p}%)"
-#     ), 
-#     label = list(
-#       treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-#       married2 ~ "Marital status"
-#     ), 
-#     digits = list(
-#       c(age) ~ 1, c(height, e2) ~ 2, c(married2, treated) ~ 1
-#     ), 
-#     missing = "always", missing_text = "Missing data"
-#   ) %>% 
-#   as_gt() %>% 
-#   gtsave("tab12.png", "img/")
-
-knitr::include_graphics("img/tab12.png")
-```
-
-:::
-
-::::
-
-
-## Reporte de datos perdidos con tbl_summary() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(c(age, height, e2) ~ "continuous2"), 
-    statistic = list(
-      c(age, height) ~ c("{mean} ({sd})", "{min} - {max}"), 
-      c(e2) ~ c("{median} ({p25} - {p75})", "{min} - {max}"),       
-      c(married2, treated) ~ "{n}  / {N} ({p}%)"
-    ), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    digits = list(
-      c(age) ~ 1, c(height, e2) ~ 2, c(married2, treated) ~ 1
-    ), 
-    missing = "no"
-  ) 
-```
-
-- [misisng_text]{.verde-h3}: Permite editar la etiqueta de missing ([Unknown]{.verde-h3} por defecto).
-
-- [missing]{.verde-h3}: Por defecto se presentan los datos perdidos solo si la variable los tiene ["ifany"]{.verde-h3}.
-
-    + [missing = "always"]{.verde-h3} siempre presenta datos perdidos, así la variable no los tenga.
-    + [missing = "no"]{.verde-h3} nunca presenta datos perdidos, así la variable los tenga.
-
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-#| code-overflow: wrap
-# datos %>% 
-#   select(age, treated, married2, height, e2) %>% 
-#   tbl_summary(
-#     type = list(c(age, height, e2) ~ "continuous2"), 
-#     statistic = list(
-#       c(age, height) ~ c("{mean} ({sd})", "{min} - {max}"), 
-#       c(e2) ~ c("{median} ({p25} - {p75})", "{min} - {max}"),       
-#       c(married2, treated) ~ "{n}  / {N} ({p}%)"
-#     ), 
-#     label = list(
-#       treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-#       married2 ~ "Marital status"
-#     ), 
-#     digits = list(
-#       c(age) ~ 1, c(height, e2) ~ 2, c(married2, treated) ~ 1
-#     ), 
-#     missing = "no"
-#   ) %>% 
-#   as_gt() %>% 
-#   gtsave("tab13.png", "img/")
-
-knitr::include_graphics("img/tab13.png")
-```
-
-:::
-
-::::
-
-## En resumen: {gtsummary} + fórmulas  {.scrollable}
-
-```{r}
-#| echo: false
 #| fig-align: center
 #| out-width: 100%
-knitr::include_graphics("img/Dan-SummaryTables-5.png")
-```
-
-## Personzalización con bold_*() / italicize_*() {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) 
-```
-
-:::
-
-::: {.column width='50%'}
-
-```{r}
+#| message: true
 #| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-#| code-overflow: wrap
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  as_gt() %>% 
-  gtsave("tab14.png", "img/")
-
-knitr::include_graphics("img/tab14.png")
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram() 
 ```
 
 :::
 
 ::::
 
-## Personzalización con bold_*() / italicize_*() {.scrollable auto-animate="true"} 
+
+### binwidth
+
+>Se puede configurar el ancho de las barras (*bins* e inglés).
 
 :::: {.columns}
 
-::: {.column width='50%'}
+::: {.column width='33.33%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+#| code-line-numbers: "1,2|3|"
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(binwidth = 5) 
+```
+
+
+:::
+
+::: {.column width='33.33%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(binwidth = 50) 
+```
+
+:::
+
+::: {.column width='33.33%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(binwidth = 200) 
+```
+
+:::
+
+::::
+
+### personalizar
+
+> Podemos personalizar el gráfico agregando capas. Por ejemplo, podemos usar `labs()` y `theme_`:
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+```{r}
+#| code-line-numbers: "1,2,3|4|5|6|4,5,6|7|"
+#| eval: false
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(binwidth = 5) + 
+  labs(x = "Ig G al inicio del estudio", 
+       y = "Frecuencia", 
+       title = "Distribución de la IgG") + 
+  theme_bw()
+```
+
+:::
+
+::: {.column width='60%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+#| echo: false
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(binwidth = 5) + 
+  labs(x = "Ig G al inicio del estudio", 
+       y = "Frecuencia", 
+       title = "Distribución de la IgG") + 
+  theme_bw()
+```
+
+:::
+
+::::
+
+### más info
+
+<br/><br/>
+[Más información en el siguiente enlace:]{.big-text1}
+
+[<https://ggplot2.tidyverse.org/reference/geom_histogram.html>]{.big-text1}
+
+:::
+
+## Histogramas de densidades {.scrollable}
+
+::: {.panel-tabset}
+
+### ggplot2
+
+>Podemos usar densidades en vez de frecuencias absolutas o relativas en los histogramas. En variables continuas, las densidades se aproximan mejor a la idea de densidad de probabilidad
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+```{r}
+#| code-line-numbers: "1,2|3|"
+#| eval: false
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(aes(y = ..density..))
+```
+
+:::
+
+::: {.column width='60%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+#| echo: false
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(aes(y = ..density..))
+```
+:::
+
+::::
+
+
+### binwidth
+
+>Se puede configurar el ancho de las barras (*bins* e inglés).
+
+:::: {.columns}
+
+::: {.column width='33.33%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(aes(y = ..density..), 
+                 binwidth = 5)
+```
+
+:::
+
+::: {.column width='33.33%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(aes(y = ..density..), 
+                 binwidth = 50)
+```
+
+:::
+
+::: {.column width='33.33%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(aes(y = ..density..), 
+                 binwidth = 200)
+```
+
+:::
+
+::::
+
+### personalizar
+
+> Podemos personalizar el gráfico agregando capas. Por ejemplo, podemos usar `labs()` y `theme_`:
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+```{r}
+#| code-line-numbers: "1,2,3|4|5|6|4,5,6|7|"
+#| eval: false
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(aes(y = ..density..), binwidth = 5) + 
+  labs(x = "Ig G al inicio del estudio", 
+       y = "Frecuencia", 
+       title = "Distribución de la IgG") + 
+  theme_bw()
+```
+
+:::
+
+::: {.column width='60%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+#| echo: false
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(aes(y = ..density..), binwidth = 5) + 
+  labs(x = "Ig G al inicio del estudio", 
+       y = "Frecuencia", 
+       title = "Distribución de la IgG") + 
+  theme_bw()
+```
+
+:::
+
+::::
+
+### más info
+
+<br/><br/>
+[Más información en el siguiente enlace:]{.big-text1}
+
+[<https://ggplot2.tidyverse.org/reference/geom_histogram.html>]{.big-text1}
+
+
+:::
+
+## Densidad {.scrollable}
+
+
+::: {.panel-tabset}
+
+### ggplot2
+
+>En vez de graficar histogramas, podemos dibujar gráfico de densidades cuyas curvas están suavizadas imitando el aspecto de una distribución de probabilidad. Usamo la geometría `geom_density()`.
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+```{r}
+#| code-line-numbers: "1,2|3|"
+#| eval: false
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_density()
+```
+
+:::
+
+::: {.column width='60%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+#| echo: false
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_density()
+```
+:::
+
+::::
+
+### adjust
+
+>Se puede configurar el parámetro de suavización adjust
+
+:::: {.columns}
+
+::: {.column width='33.33%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_density(adjust = 0.1)
+```
+
+
+:::
+
+::: {.column width='33.33%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_density(adjust = 0.5)
+```
+
+:::
+
+::: {.column width='33.33%'}
+
+```{r}
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_density(adjust = 2)
+```
+
+:::
+
+::::
+
+### Personalizar
+
+> Podemos personalizar el gráfico agregando capas. Por ejemplo, podemos usar `labs()` y `theme_`:
+
+:::: {.columns}
+
+::: {.column width='40%'}
 
 ```{r}
 #| eval: false
-#| code-line-numbers: 11|
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels()
+#| code-line-numbers: "1,2,3|4,5,6|7|"
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_density(adjust = 1) + 
+  labs(x = "Ig G al inicio del estudio", 
+       y = "Densidad", 
+       title = "Distribución de la IgG") + 
+  theme_bw()
 ```
 
-- [bold_labels()]{.verde-h3}: negrita a las etiquetas de las variables
+:::
+
+::: {.column width='60%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+#| echo: false
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_density(adjust = 1) + 
+  labs(x = "Ig G al inicio del estudio", 
+       y = "Densidad", 
+       title = "Distribución de la IgG") + 
+  theme_bw()
+```
+
+
+:::
+
+::::
+
+### más info
+
+<br/><br/>
+[Más información en el siguiente enlace:]{.big-text1}
+
+[<https://ggplot2.tidyverse.org/reference/geom_density.html>]{.big-text1}
+
+:::
+
+
+## Gráfico de cajas {.scrollable}
+
+::: {.panel-tabset}
+
+### ggplot2
+
+>Podemos crear gráficos de cajas usando la geometría `geom_boxplot()`.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Cajas horizontales]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|"
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_boxplot()
+```
 
 :::
 
 ::: {.column width='50%'}
 
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-#| code-overflow: wrap
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() %>% 
-  as_gt() %>% 
-  gtsave("tab15.png", "img/")
+[Cajas verticales]{.hl}
 
-knitr::include_graphics("img/tab15.png")
+```{r}
+#| code-line-numbers: "1|2|3|"
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(y = IgG_Basal)) + 
+  geom_boxplot()
 ```
 
 :::
 
 ::::
 
-## Personzalización con bold_\*() / italicize_\*() {.scrollable auto-animate="true"} 
+### personalizar
+
+> Podemos personalizar el gráfico agregando capas. Por ejemplo, podemos usar `labs()` y `theme_`. También podemos eliminar los números y guiones del eje x usando `theme()`.
 
 :::: {.columns}
 
-::: {.column width='50%'}
+::: {.column width='40%'}
 
 ```{r}
+#| code-line-numbers: "1,2,3|4|5|6|3,5,6|7|4,5,6|7|8|7,8|"
 #| eval: false
-#| code-line-numbers: 12|
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() %>% 
-  italicize_levels() 
+bd_inmuno %>% 
+  ggplot(aes(y = IgG_Basal)) + 
+  geom_boxplot() + 
+  labs(x = NULL, 
+       y = "IgG basal (AU/mL)", 
+       title = "Gráfico de cajas de IgG basal") + 
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank())
 ```
-
-- [bold_labels()]{.verde-h3}: negrita a las etiquetas de las variables
-
-- [italicize_levels()]{.verde-h3}: cursiva a los niveles (valores) de las variables
 
 :::
 
-::: {.column width='50%'}
+::: {.column width='60%'}
 
 ```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 45%
-#| code-overflow: wrap
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() %>% 
-  italicize_levels() %>% 
-  as_gt() %>% 
-  gtsave("tab16.png", "img/")
-
-knitr::include_graphics("img/tab16.png")
-```
-
-:::
-
-::::
-
-
-## Guardar tabla como documento MS Word {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-- Se puede [descargar]{.verde-h3} la tabla en formato [MS. Word]{.verde-h3} para [reporte reproducible]{.verde-h3}.
-
-- Primero se  [guarda]{.verde-h3}  como un [objeto]{.verde-h3} de [R]{.verde-h3}:
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() -> tabla1 
-
-tabla1
-```
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() -> tabla1
-```
-
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 50%
-#| code-overflow: wrap
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() %>% 
-  as_gt() %>% 
-  gtsave("tab17.png", "img/")
-
-knitr::include_graphics("img/tab17.png")
-```
-
-:::
-
-::::
-
-## Guardar tabla como documento MS Word {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-- Se puede [descargar]{.verde-h3} la tabla en formato [MS. Word]{.verde-h3} para [reporte reproducible]{.verde-h3}.
-
-- Primero se  [guarda]{.verde-h3}  como un [objeto]{.verde-h3} de [R]{.verde-h3}:
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() -> tabla1 
-
-tabla1
-```
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() -> tabla1
-```
-
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 50%
-#| code-overflow: wrap
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() %>% 
-  as_gt() %>% 
-  gtsave("tab17.png", "img/")
-
-knitr::include_graphics("img/tab17.png")
-```
-
-:::
-
-::::
-
-- Luego, al objeto se lo [guarda]{.verde-h3} como un archivo de [MS Word]{.verde-h3}. 
-
-
-## Guardar tabla como documento MS Word {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-- Se puede [descargar]{.verde-h3} la tabla en formato [MS. Word]{.verde-h3} para [reporte reproducible]{.verde-h3}.
-
-- Primero se  [guarda]{.verde-h3}  como un [objeto]{.verde-h3} de [R]{.verde-h3}:
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() -> tabla1 
-
-tabla1
-```
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() -> tabla1
-```
-
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 50%
-#| code-overflow: wrap
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() %>% 
-  as_gt() %>% 
-  gtsave("tab17.png", "img/")
-
-knitr::include_graphics("img/tab17.png")
-```
-
-:::
-
-::::
-
-- Luego, al objeto se lo [guarda]{.verde-h3} como un archivo de [MS Word]{.verde-h3}. 
-
-:::: {.columns}
-
-::: {.column width='30%'}
-
-```{r}
-library(flextable)
-```
-
-:::
-
-::: {.column width='70%'}
-
-- Paso 1: Cargar paquete [{flextable}]{.verde-h3}
-
-:::
-
-::::
-
-
-## Guardar tabla como documento MS Word {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-- Se puede [descargar]{.verde-h3} la tabla en formato [MS. Word]{.verde-h3} para [reporte reproducible]{.verde-h3}.
-
-- Primero se  [guarda]{.verde-h3}  como un [objeto]{.verde-h3} de [R]{.verde-h3}:
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() -> tabla1 
-
-tabla1
-```
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() -> tabla1
-```
-
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 50%
-#| code-overflow: wrap
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() %>% 
-  as_gt() %>% 
-  gtsave("tab17.png", "img/")
-
-knitr::include_graphics("img/tab17.png")
-```
-
-:::
-
-::::
-
-- Luego, al objeto se lo [guarda]{.verde-h3} como un archivo de [MS Word]{.verde-h3}. 
-
-:::: {.columns}
-
-::: {.column width='30%'}
-
-```{r}
-library(flextable)
-
-tabla1 %>% 
-  as_flex_table() 
-```
-
-:::
-
-::: {.column width='70%'}
-
-- Paso 1: Cargar paquete [{flextable}]{.verde-h3}
-
-- Paso 2: Se convierte a objeto de tipo [flextable]{.verde-h3} con la función [as_flex_table()]{.verde-h3}.
-
-
-:::
-
-::::
-
-
-## Guardar tabla como documento MS Word {.scrollable auto-animate="true"} 
-
-:::: {.columns}
-
-::: {.column width='50%'}
-- Se puede [descargar]{.verde-h3} la tabla en formato [MS. Word]{.verde-h3} para [reporte reproducible]{.verde-h3}.
-
-- Primero se  [guarda]{.verde-h3}  como un [objeto]{.verde-h3} de [R]{.verde-h3}:
-
-```r
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() -> tabla1 
-
-tabla1
-```
-:::
-
-::: {.column width='50%'}
-
-```{r}
-#| echo: false
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() -> tabla1
-```
-
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| error: false
-#| fig-align: center
-#| out-width: 50%
-#| code-overflow: wrap
-datos %>% 
-  select(age, treated, married2, height, e2) %>% 
-  tbl_summary(
-    type = list(height ~ "continuous"), 
-    label = list(
-      treated ~ "Treated with supplement", e2 ~ "Estradiol, UI",
-      married2 ~ "Marital status"
-    ), 
-    missing = "ifany"
-  ) %>% 
-  bold_labels() %>% 
-  as_gt() %>% 
-  gtsave("tab17.png", "img/")
-
-knitr::include_graphics("img/tab17.png")
-```
-
-:::
-
-::::
-
-- Luego, al objeto se lo [guarda]{.verde-h3} como un archivo de [MS Word]{.verde-h3}: 
-
-
-:::: {.columns}
-
-::: {.column width='30%'}
-
-```{r}
-library(flextable)
-
-tabla1 %>% 
-  as_flex_table() %>% 
-  save_as_docx(path = "Tabla1.docx")
-```
-
-:::
-
-::: {.column width='70%'}
-
-- Paso 1: Cargar paquete [{flextable}]{.verde-h3}
-
-- Paso 2: Se convierte a objeto de tipo [flextable]{.verde-h3} con la función [as_flex_table()]{.verde-h3}.
-
-- Paso 3: Se guarda como word con la función [save_as_docx()]{.verde-h3}
-
-:::
-
-::::
-
-
-## Guardar tabla como documento MS Word (cont.)  {.scrollable}
-
-- El [MS Word]{.verde-h3} aparecerá en la [carpeta]{.verde-h3}  del [proyecto]{.verde-h3}:
-
-```{r}
-#| echo: false
 #| fig-align: center
 #| out-width: 100%
-knitr::include_graphics("img/tabla1-rstudio.png")
-```
-
-
-## Guardar tabla como documento MS Word (cont.)  {.scrollable}
-
-- Y la [tabla]{.verde-h3} en [Word]{.verde-h3} lucirá así:
-
-```{r}
+#| message: true
 #| echo: false
-#| fig-align: center
-#| out-width: 100%
-knitr::include_graphics("img/tabla1-word.png")
-```
-
-## Guardar tabla como documento MS Excel  {.scrollable}
-
-:::: {.columns}
-
-::: {.column width='30%'}
-
-- Usamos el paquete [{huxtable}]{.verde-h3}
-
-```{r}
-library(huxtable)
-```
-
-- Con la función [as_hux_xlsx]{.verde-h3} convertimos el objeto [tbl_summary]{.verde-h3} a un excel con un nombre de archivo que uno defina:
- 
-```{r}
-tabla1 %>% 
-  as_hux_xlsx(file = "Tabla1.xlsx")
-```
-
-:::
-
-::: {.column width='70%'}
-
-
-- La tabla en excel se muestra a continuación:
-
-```{r}
-#| echo: false
-#| fig-align: center
-#| out-width: 100%
-knitr::include_graphics("img/tabla1-excel.png")
+bd_inmuno %>% 
+  ggplot(aes(y = IgG_Basal)) + 
+  geom_boxplot() + 
+  labs(x = NULL, 
+       y = "IgG basal (AU/mL)", 
+       title = "Gráfico de cajas de IgG basal") + 
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank())
 ```
 
 :::
 
 ::::
 
-## `r fontawesome::fa("laptop-code", "white")` Nuestro turno {background-color="#000000"}
+### partes
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+- Anatomía:
+
+    + `Bordes de caja`: percentil 25 (cuartil 1) y 75 (cuartil 3)
+    
+    + `Linea horizontal dentro de caja`: percentil 50 (cuartil 2 o mediana)
+    
+    + `Rango intercuartílico (IQR)`: percentil 75- percentil 25
+    
+    + `Bigotes`: ± 1.5 IQR
+    
+    + `Puntos fuera de bigotes`: Outliers según regla de Tukey
+    
+:::
+
+::: {.column width='60%'}
+
+```{r}
+#| echo: false
+#| out-width: 100%
+#| fig-align: center
+bd_inmuno %>% 
+  ggplot(aes(y = edad)) + 
+  geom_boxplot() + 
+  labs(x = NULL, 
+       y = "Edad (años)", 
+       title = "Gráfico de cajas de Edad") +  
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) +
+  annotate("text", x = 0.2, y = 62, label = "Percentil 75 = Cuartil 3", color = "red") + 
+  annotate("text", x = 0.2, y = 49, label = "Percentil 50 = Cuartil 2 = Mediana", color = "red") + 
+  annotate("text", x = 0.2, y = 39, label = "Percentil 25 = Cuartil 1", color = "red") + 
+  annotate("text", x = 0.16, y = 90, label = "Extremo superior (p75 + 1.5 * IQR)", color = "red") + 
+  annotate("text", x = 0.15, y = 25, label = "Extremo inferior (p75 - 1.5 * IQR)", color = "red") + 
+  annotate("text", x = 0.13, y = 95, label = "Datos extremos ('outliers')", color = "red") 
+```
+
+
+:::
+
+::::
+
+
+### notas 
+
+- Aunque se puede usar en gráficos univariados, no es un muy gráfico para estos fines.
+
+    - ¡Es mejor para realizar comparaciones en análisis bivariados!
+
+- Los "outliers" o valores extremos son solo referenciales.
+
+- Las cajas sugieren simetría de distribución, pero no permiten ver la forma directamente: 
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Distribución simétrica]{.hl}
+
+```{r}
+#| echo: false
+set.seed(123)
+datos <- data.frame(
+  simetrico = rnorm(100), 
+  asimetrico = rexp(100, 0.5)
+)
+```
+
+```{r}
+#| echo: false
+datos %>%  
+  ggplot(aes(x = simetrico)) +  
+  geom_boxplot()
+```
+
+
+:::
+
+::: {.column width='50%'}
+
+[Distribución asimétrica]{.hl}
+
+```{r}
+#| echo: false
+datos %>%  
+  ggplot(aes(x = asimetrico)) +  
+  geom_boxplot()
+```
+
+:::
+
+::::
+
+
+
+### más info
+
+<br/><br/>
+[Más información en el siguiente enlace:]{.big-text1}
+
+[<https://ggplot2.tidyverse.org/reference/geom_boxplot.html>]{.big-text1}
+
+:::
+
+## Violin {.scrollable}
+
+::: {.panel-tabset}
+
+### ggplot2
+
+>Gráficos de violin son similares a gráficos de caja, excepto porque también muestran la densidad de probabilidad.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Cajas horizontales]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|"
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_violin()
+```
+
+:::
+
+::: {.column width='50%'}
+
+[Cajas verticales]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|"
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_violin()
+```
+
+:::
+
+::::
+
+### personalizar
+
+> Podemos personalizar el gráfico agregando capas. Por ejemplo, podemos usar `labs()` y `theme_`. También podemos eliminar los números y guiones del eje x usando `theme()`.
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+```{r}
+#| code-line-numbers: "1,2,3|4|5|6|3,5,6|7|4,5,6|7|8|9|8,9|"
+#| eval: false
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_violin() + 
+  labs(x = NULL, 
+       y = "IgG basal (AU/mL)", 
+       title = "Gráfico de violin de IgG basal") + 
+  theme_bw() + 
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) 
+```
+
+:::
+
+::: {.column width='60%'}
+
+```{r}
+#| fig-align: center
+#| out-width: 100%
+#| message: true
+#| echo: false
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_violin() + 
+  labs(x = NULL, 
+       y = "IgG basal (AU/mL)", 
+       title = "Gráfico de violin de IgG basal") + 
+  theme_bw() + 
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) 
+```
+
+:::
+
+::::
+
+### notas 
+
+- A menudo se reportan combinado con un gráfico de cajas, puntos o ambos.
+
+- Los gráficos de violin combinados dan mucha más información, por lo que se debería preferir usar.
+
+- Contraindicación: Si se cuentan con pocos datos, los gráficos de kernel no son confiables.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Distribución simétrica]{.hl}
+
+```{r}
+#| echo: false
+set.seed(123)
+datos <- data.frame(
+  simetrico = rnorm(100), 
+  asimetrico = rexp(100, 0.5)
+)
+```
+
+```{r}
+#| echo: false
+datos %>%  
+  ggplot(aes(x = 1, y = simetrico)) +  
+  geom_violin() + 
+  theme_bw() + 
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) 
+```
+
+
+:::
+
+::: {.column width='50%'}
+
+[Distribución asimétrica]{.hl}
+
+```{r}
+#| echo: false
+datos %>%  
+  ggplot(aes(x = 1, y = asimetrico)) +  
+  geom_violin() + 
+  theme_bw() + 
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) 
+```
+
+:::
+
+::::
+
+
+
+### más info
+
+<br/><br/>
+[Más información en el siguiente enlace:]{.big-text1}
+
+[<https://ggplot2.tidyverse.org/reference/geom_violin.html>]{.big-text1}
+
+:::
+
+## Combinación de gráficos {.scrollable}
+
+>Se sugiere reportar gráficos descriptivos que sean informativos. Estos pueden obtenerse de combinar gráficos existentes. Veremos algunos ejemplos.
+
+::: {.panel-tabset}
+
+### histograma+densidad
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Sin personalizar]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|4|"
+#| fig-align: center
+#| out-width: 100%
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(aes(y = ..density..)) + 
+  geom_density()
+```
+
+:::
+
+::: {.column width='50%'}
+
+[Personalizado]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|4|"
+#| fig-align: center
+#| out-width: 100%
+bd_inmuno %>% 
+  ggplot(aes(x = IgG_Basal)) + 
+  geom_histogram(aes(y = ..density..), colour = "black", fill = "white") + 
+  geom_density(fill = 4, alpha = 0.25) + 
+  theme_minimal()
+```
+
+:::
+
+::::
+
+### caja+dotplot
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Sin personalizar]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|4|"
+#| fig-align: center
+#| out-width: 100%
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_boxplot() + 
+  geom_dotplot(binaxis = "y", stackdir = "center") 
+```
+
+:::
+
+::: {.column width='50%'}
+
+[Personalizado]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|4|1,2,3,4|5|6|7,8|"
+#| fig-align: center
+#| out-width: 100%
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_boxplot() + 
+  geom_dotplot(binaxis = "y", stackdir = "center") + 
+  labs(x = NULL, y = "IgG basal (AU/ml)") + 
+  theme_minimal() + 
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) 
+
+```
+
+:::
+
+::::
+
+### cajas+puntos
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Sin personalizar]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|4|"
+#| fig-align: center
+#| out-width: 100%
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_boxplot() +
+  geom_jitter()
+```
+
+:::
+
+::: {.column width='50%'}
+
+[Personalizado]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|4|5,6,7,8|"
+#| fig-align: center
+#| out-width: 100%
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_boxplot() +
+  geom_jitter() + 
+  labs(x = NULL, y = "IgG basal (AU/ml)") + 
+  theme_bw() + 
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) 
+
+```
+
+:::
+
+::::
+
+### violin+caja
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Sin personalizar]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|4|"
+#| fig-align: center
+#| out-width: 100%
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_violin() +
+  geom_boxplot(width = 0.1)
+```
+
+:::
+
+::: {.column width='50%'}
+
+[Personalizado]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|4|5,6,7,8|"
+#| fig-align: center
+#| out-width: 100%
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_violin() +
+  geom_boxplot(width = 0.1) + 
+  labs(x = NULL, y = "IgG basal (AU/ml)") + 
+  theme_bw() + 
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) 
+
+```
+
+:::
+
+::::
+
+
+### todo
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Sin personalizar]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|4|5|"
+#| fig-align: center
+#| out-width: 100%
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "white") + 
+  geom_jitter()
+```
+
+:::
+
+::: {.column width='50%'}
+
+[Personalizado]{.hl}
+
+```{r}
+#| code-line-numbers: "1|2|3|4|5|6,7,8,9|"
+#| fig-align: center
+#| out-width: 100%
+bd_inmuno %>% 
+  ggplot(aes(x = 1, y = IgG_Basal)) + 
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "white") + 
+  geom_jitter(color = "blue") + 
+  labs(x = NULL, y = "IgG basal (AU/ml)") + 
+  theme_bw() + 
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) 
+
+```
+
+:::
+
+::::
+
+:::
+
+
+# Gráficas de variables categóricas con R
+
+## ¿Qué graficos podemos hacer para visualizar variables categóricas? {.scrollable}
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+- Se pueden hacer una infinidad de estos.
+
+- El más común para investigación científica es el `gráfico de barras`.
+
+- Una gráfico menos usado en investigación científica, pero sí en reportes o presentaciones podría ser el `gráfico de pái`. 
+
+- Otros gráficos interesantes: 
+
+![](img/lollipop.png){.absolute top=600 left=0 width="400" height="400"}
+
+:::
+
+::: {.column width='60%'}
+
+![](img/circular-barplot.png){.absolute top=600 left=600 width="400" height="400"}
+
+![](img/barplot.png){.absolute top=100 left=1000 width="400" height="400"}
+
+![](img/pie.png){.absolute top=100 left=1500 width="400" height="400"}
+
+
+![](img/treemap.png){.absolute top=600 left=1200 width="400" height="400"}
+
+
+:::
+
+::::
+
+# Gráfico de barras
+
+## Estructura de datos para gráfico de barras {.scrollable}
+
+<br/>
+
+<center>[Datos individuales:]{.big-text3}</center>
+
+<center>[geom_bar()]{.big-text2}</center>
+
+<center>[vs.]{.big-text3}</center>
+
+<center>[Datos agrupados:]{.big-text3}</center>
+
+<center>[geom_bar(stat = "identity") o]{.big-text2}</center>
+
+<center>[geom_col()]{.big-text2}</center>
+
+## Gráfico de barras de frecuencias absolutas {.scrollable}
+
+::: {.panel-tabset}
+
+### datos
+
+> Para estos gráficos vamos a trabajar con los datos de pacientes hospitalizados durante una pandemia de Ébola. Los datos pertenecen al libro [The Epidemiologist Handbook](https://epirhandbook.com/en/index.html) descrito en la sección del Syllabus.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+- Importamos y exploramos los datos que están en formato de R: *.rds
+
+```{r}
+ebola_data <- import("linelist_cleaned.rds")
+ebola_data %>% 
+  glimpse()
+```
+
+:::
+
+::: {.column width='50%'}
+
+- Distribución de pacientes según hospital [tabyl()]{.plo}
+
+```{r}
+ebola_data %>% 
+  tabyl(hospital)
+```
+
+
+- Distribución de pacientes sin datos faltantes [tabyl()]{.plo}
+
+```{r}
+ebola_data %>% 
+  filter(hospital != "Missing") %>% 
+  tabyl(hospital)
+```
+
+:::
+
+::::
+
+### geom_bar()
+
+> Usamos [geom_bar()]{.plo} cuando queremos que la altura de la barra refleje el número de filas relevantes en los datos. Por defecto, las barras son de frecuencias absolutas y se llaman count.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Barplot vertical]{.hl}
+
+```{r}
+ebola_data %>% 
+  ggplot(aes(x = hospital)) + 
+  geom_bar()
+```
+
+:::
+
+::: {.column width='50%'}
+
+[Barplot horizontal]{.hl}
+
+```{r}
+ebola_data %>% 
+  ggplot(aes(y = hospital)) + 
+  geom_bar()
+```
+
+:::
+
+::::
+
+### geom_col()
+
+> Usamos [geom_col()]{.plo} cuando queremos que la altura de la barra refleje valores pre-calculados que existen en los datos. A menudo, los datos son agregads y pueden obtenerse mediante la combinación summarise() y group_by(). 
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+- Te proprocionan una tabla de datos agregada (no tienes valores individuales), solo los totales de casos y6 su prevalencia:
+
+```{r}
+#| echo: false
+datos_agregados <- data.frame(
+  nivel_dolor = c("Leve", "Moderado", "Severo"), 
+  casos = c(234, 123, 21), 
+  prevalencia = c(61.9, 32.5, 5.6)
+)
+
+datos_agregados
+```
+
+
+:::
+
+::: {.column width='50%'}
+
+- Puedes graficarlo usando [geom_col()]{.plo} que no requiere datos individuales.
+
+```{r}
+datos_agregados %>% 
+  ggplot(aes(x = nivel_dolor, y = casos)) + 
+  geom_col()
+```
+
+
+:::
+::::
+
+### _col vs. _bar()
+
+>geom_col() y geom_bar() son equivalentes.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+```{r}
+datos_agregados %>% 
+  ggplot(aes(x = nivel_dolor, y = casos)) + 
+  geom_col()
+```
+
+
+
+:::
+
+::: {.column width='50%'}
+
+```{r}
+datos_agregados %>% 
+  ggplot(aes(x = nivel_dolor, y = casos)) + 
+  geom_bar(stat = "identity")
+```
+
+:::
+
+::::
+
+
+### agregar datos
+
+>Si tenemos datos individuales, podemos agregarlos y así resulta más fácil pensar en los gráficos de barras desde ggplot()
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+```{r}
+ebola_data %>% 
+  group_by(hospital) %>% 
+  count() %>% 
+  ggplot(aes(x = n, y = hospital)) + 
+  geom_col()
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r}
+ebola_data %>% 
+  group_by(hospital) %>% 
+  count() %>% 
+  ggplot(aes(x = n, y = hospital)) + 
+  geom_bar(stat = "identity")
+```
+
+:::
+
+::::
+
+### personalizar
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Cambiar el orden de las barras arbitrariamente]{.hl}
+
+```{r}
+ebola_data %>% 
+  mutate(
+    hospital = fct_relevel(hospital, 
+                           "St. Mark's Maternity Hospital (SMMH)", 
+                           "Port Hospital", 
+                           "Central Hospital",
+                           "Military Hospital",
+                           "Other",
+                           "Missing")
+    ) %>% 
+  ggplot(aes(y = hospital)) + 
+  geom_bar()
+```
+
+:::
+
+::: {.column width='50%'}
+
+[Editar etiquetas y tema]{.hl}
+
+```{r}
+ebola_data %>% 
+  mutate(
+    hospital = fct_relevel(hospital, 
+                           "St. Mark's Maternity Hospital (SMMH)", "Port Hospital", 
+                           "Central Hospital", "Military Hospital", "Other",
+                           "Missing")
+    ) %>% 
+  ggplot(aes(y = hospital)) + 
+  geom_bar() + 
+  labs(x = "Frecuencia absoluta", y = "Hospitales") + 
+  theme_bw()
+```
+
+:::
+
+::::
+
+:::
+
+
+## Gráfico de barras de frecuencias relativas {.scrollable}
+
+::: {.panel-tabset}
+
+### porcentajes
+
+> Las frecuencias relativas necesitan ser calculadas para reportarse. La forma más fácil de hacerlo es agregando los datos mediante el uso de [count()]{.plo}. Luego usamos [mutate()]{.plo} para crear las proporciones o porcentajes. También podemos trabajar con datos individuales, pero el código puede verse un poco más duro.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+- Agregamos los datos de hospitalizados
+
+```{r}
+ebola_data %>% 
+  count(hospital)
+```
+
+:::
+
+::: {.column width='50%'}
+
+- Creamos la columna de porcentaje:
+
+```{r}
+ebola_data %>% 
+  count(hospital) %>% 
+  mutate(porcentaje = 100 * n / sum(n))
+```
+
+:::
+
+::::
+
+
+### geom_bar()
+
+> Podemos usar geom_bar() con datos agregados y no agregados para obtener prorporciones. El código puede ser un poco más "extraño" con datos individuales, pero la idea es copiar/pegar y adaptar.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Agregando datos]{.hl}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  mutate(porcentaje = 100 * n / sum(n)) %>% 
+  ggplot(aes(x = hospital, y = porcentaje)) + 
+  geom_bar(stat = "identity")
+```
+
+
+:::
+
+::: {.column width='50%'}
+
+[Con datos individuales]{.hl}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  ggplot(aes(x = hospital)) + 
+  geom_bar(aes(y = (..count..)/sum(..count..)))
+```
+
+:::
+::::
+
+### geom_col()
+
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Orden por defecto]{.hl}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  mutate(porcentaje = 100 * n / sum(n)) %>% 
+  ggplot(aes(x = hospital, y = porcentaje)) + 
+  geom_col()
+```
+
+
+
+:::
+
+::: {.column width='50%'}
+
+[Orden arbitrario]{.hl}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  mutate(
+    hospital = fct_relevel(hospital, 
+                           "St. Mark's Maternity Hospital (SMMH)", 
+                           "Port Hospital", 
+                           "Central Hospital",
+                           "Military Hospital",
+                           "Other",
+                           "Missing")
+    ) %>% 
+  count(hospital) %>% 
+  mutate(porcentaje = 100 * n / sum(n)) %>% 
+  ggplot(aes(x = hospital, y = porcentaje)) + 
+  geom_col()
+```
+
+:::
+
+::::
+
+
+### reordenar barras
+
+>Podemos querer reordenar las barras de mayor a menoro o viceversa. geom_col() y geom_bar() tiene su propia forma de hacerlo.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Reordenar con geom_bar()]{.hl}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  ggplot(aes(x = fct_infreq(hospital))) + 
+  geom_bar()
+```
+
+:::
+
+::: {.column width='50%'}
+
+[Reordenar con geom_col()]{.hl}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  group_by(hospital) %>% 
+  count() %>% 
+  ggplot(aes(x = n, y = fct_reorder(hospital, n))) + 
+  geom_col()
+```
+
+:::
+
+::::
+
+### etiquetas
+
+>Podemos etiquetar los gráficos usando la función labs() y sus argumentos.
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  mutate(porcentaje = n / sum(n)) %>% 
+  ggplot(aes(x = porcentaje, y = fct_reorder(hospital, porcentaje))) + 
+  geom_col() + 
+  labs(x = "Porcentaje (%)", 
+       y = "Hospital", 
+       title = "Distribución de hospitalizaciones de pacientes de Ébola")
+```
+
+### colores
+
+>También podemos hacer que los colores cambien en base a alguna otra variable
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  mutate(porcentaje = n / sum(n)) %>% 
+  ggplot(aes(x = porcentaje, 
+             y = fct_reorder(hospital, porcentaje), 
+             fill = hospital)) + 
+  geom_col() + 
+  labs(x = "Porcentaje (%)", 
+       y = "Hospital", 
+       title = "Distribución de hospitalizaciones de pacientes de Ébola", 
+       fill = "Hospital") 
+```
+
+### leyenda
+
+> Podemos eliminar la leyenda fácilmente con una capa adicional llamada theme(legend.position="none")
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  mutate(porcentaje = n / sum(n)) %>% 
+  ggplot(aes(x = porcentaje, 
+             y = fct_reorder(hospital, porcentaje), 
+             fill = hospital)) + 
+  geom_col() + 
+  labs(x = "Porcentaje (%)", 
+       y = "Hospital", 
+       title = "Distribución de hospitalizaciones de pacientes de Ébola", 
+       fill = "Hospital")  + 
+  theme(legend.position = "none")
+```
+
+
+
+:::
+
+
+# Otros gráficos
+
+## Gráfico de barras apilada {.scrollable}
+
+> En vez de graficar varias barras de manera horizontal, las apilamos todas en una sola barra.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Grafico de barras apiladas de frecuencias absolutas]{.hl}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  ggplot(aes(x = "", y = n, fill = hospital)) + 
+  geom_bar(stat = "identity", position = "stack")
+```
+
+:::
+
+::: {.column width='50%'}
+
+[Grafico de barras apiladas de frecuencias relativas]{.hl}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  ggplot(aes(x = "", y = n, fill = hospital)) + 
+  geom_bar(stat = "identity", position = "fill")
+```
+
+:::
+
+::::
+
+
+## Gráfico de pie {.scrollable}
+
+> Es un gráfico de barras empaquetado como una torta o pái; por lo que el código en ggplot primero crea el gráfico de barras y luego lo convierte en torta.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+[Grafico de barras apiladas de frecuencias absolutas]{.hl}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  ggplot(aes(x = "", y = n, fill = hospital)) + 
+  geom_bar(stat = "identity", width = 1) + 
+  coord_polar("y", start = 0)
+```
+:::
+
+::: {.column width='50%'}
+
+[Grafico de barras apiladas de frecuencias relativas]{.hl}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  ggplot(aes(x = "", y = n, fill = hospital)) + 
+  geom_bar(stat = "identity", position = "fill", width = 1) + 
+  coord_polar("y", start = 0)
+```
+
+:::
+
+::::
+
+## Lollipop plot {.scrollable}
+
+> Gráficos que parecen chupetines ("lollipop"). Son equivalentes a las barras. Pueden usarse también para describir la distribución de variables numéricas discretas y deberían preferirse a los histogramas en este caso.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  ggplot(aes(x = hospital, y = n)) + 
+  geom_segment(aes(x = hospital, xend = hospital, y = 0, yend = n)) + 
+  geom_point() + 
+  theme_minimal()
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r}
+#| fig-align: center
+ebola_data %>% 
+  count(hospital) %>% 
+  ggplot(aes(x = hospital, y = n)) + 
+  geom_segment(aes(x = hospital, xend = hospital, y = 0, yend = n), color = "skyblue") + 
+  geom_point(color = "blue", alpha = 0.6, size = 4) + 
+  theme_light() + 
+  coord_flip() + 
+  theme(
+  panel.grid.major.y = element_blank(),
+  panel.border = element_blank(),
+  axis.ticks.y = element_blank()
+  )
+```
+
+:::
+
+::::
+
+## Treemap {.scrollable}
+
+> Es un gráfico básico que muestra mosaicos. El área de cada polígono refleja su frecuencia absoluta o relativa. Se debe usar el paquete {treemap}
+
+```{r}
+#| fig-align: center
+library(treemap)
+ebola_data %>% 
+  count(hospital) %>% 
+  treemap(index = "hospital", 
+          vSize = "n", 
+          type = "index")
+```
+
+## Más gráficos {.scrollable}
+
+> Revisar la web "The R Graph Gallery":
+
+```{r}
+#| echo: false
+#| fig-align: center
+knitr::include_graphics("img/r-gallery.png")
+```
+
+ <center>[Ver más: <https://r-graph-gallery.com/index.html>]{.bigtext2}</center>
+
+## `r fontawesome::fa("mug-saucer", "white")` Hagamos una pausa {background-color="#00817E"}
 <hr>
 
-\
+::: r-fit-text
 
-- Descargue la carpeta denominada [taller05]{.verde-h3} disponible en la carpeta compartida.
+<center>
 
-- Abra el proyecto denominado [taller05.Rproj]{.verde-h3}
+Tomemos un descanso de `5 minutos`...
 
-- Complete y ejecute el código faltante en los chunk de código de la SEGUNDA PARTE.
+Estire las piernas `r fontawesome::fa("person-walking", "white")`... 
 
-- Una vez culmine todo el proceso, renderice el archivo .qmd.
+Deje de ver las pantallas `r fontawesome::fa("laptop", "white")`...
 
-\
-\
-\  
+... cualquier `r fontawesome::fa("laptop", "white")`, las del celular `r fontawesome::fa("mobile", "white")` también.
+
+</center>
+
+:::
+
+```{r}
+#| echo: false
+library(countdown)
+countdown_timer <- function(
+    minutes = 1, 
+    play_sound = TRUE, 
+    font_size = "2em", 
+    ...
+) {
+  countdown(
+    minutes = minutes,
+    # Fanfare when it's over
+    play_sound = play_sound,
+    # Set timer theme to match solarized colors
+    color_border              = "#404041",
+    color_text                = "white",
+    color_background = "#000000",
+    color_running_background  = "#72994E",
+    color_running_text        = "white",
+    color_finished_background = "#EE6331",
+    color_finished_text       = "white",
+    font_size = font_size,
+    ...
+  )
+}
+```
+
+```{r}
+#| echo: false
+countdown_timer(5)
+```
 
 ## 
 
