@@ -35,7 +35,7 @@ slide_buttons("/slides/sesion05/sesion05")
 |                              |                                                                                  |
 |----------------------|--------------------------------------------------|
 | Instructivo en línea         | [Aquí](../taller/taller05/taller05_instructivo.html)                                                 |
-| Instructivo con solucionario | [Aquí](../taller/taller05/taller05_instructivo_solno.html)                                                                       |
+| Instructivo con solucionario | [Aquí](../taller/taller05/taller05_instructivo_sol.html)                                                                       |
 | Quarto para alumnos          | [Aquí](../taller/taller05/taller05_alumno.qmd)                                                                       |
 | Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1u5BxnIIDTEF4MNqJJQv_QE8-RVoqgxrk) |
 

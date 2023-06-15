@@ -1,8 +1,10 @@
 {
-  "hash": "6f800e4cef2de0b8a604d5a0044e53e6",
+  "hash": "e6b4626db0fa5b5bc785bb2c8945e4bc",
   "result": {
-    "markdown": "---\ntitle: \"Sesión 06\"\ndate: \"2022-10-14\"\n---\n\n\n## Objetivos\n\n[Disponible cuando se grabe esta clase]\n\n\n## Materiales\n\n::: {.panel-tabset}\n\n### Clase grabada\n\n[Disponible cuando se grabe esta clase]\n\n\n### Slides\n\n\n\n\n\n\n\n\n### Talleres\n\n|                              |                                                                                  |\n|----------------------|--------------------------------------------------|\n| Instructivo en línea         | [Aquí]()                                                 |\n| Instructivo con solucionario | [Aquí]()                                                                       |\n| Quarto para alumnos          | [Aquí]()                                                                       |\n| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1b9jkjs4Vp0oFMC53LqIo5D8bA_m5xfqn) |\n\n:::\n\n\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Sesión 06\"\ndate: \"2023-06-14\"\n---\n\n\n## Objetivos\n\n[Disponible cuando se grabe esta clase]\n\n\n## Materiales\n\n::: {.panel-tabset}\n\n### Clase grabada\n\n[Disponible cuando se grabe esta clase]\n\n\n### Slides\n\n\n\n\n<p><a class=\"btn btn-danger\" target=\"_blank\" href=\"/slides/sesion06/sesion06.html\"><i class=\"fa-solid fa-arrow-up-right-from-square\"></i> Ver diapositivas en una nueva ventana</a></p>\n\n```{=html}\n<iframe width=\"780\" height=\"500\" src=\"../slides/sesion05/sesion05.html\" title=\"Sesión 6 - Inferencia Estadística con R\"></iframe>\n```\n\n\n### Talleres\n\n|                              |                                                                                  |\n|----------------------|--------------------------------------------------|\n| Instructivo en línea         | [Aquí](../taller/taller06/taller06_instructivo.html)                                                 |\n| Instructivo con solucionario | [Aquí](../taller/taller06/taller06_instructivo_solno.html)                                                                       |\n| Quarto para alumnos          | [Aquí](../taller/taller06/taller06_alumno.qmd)                                                                       |\n| Toda la carpeta del taller   | [Aquí](https://drive.google.com/drive/folders/1b9jkjs4Vp0oFMC53LqIo5D8bA_m5xfqn) |\n\n:::\n\n",
+    "supporting": [
+      "06-content_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

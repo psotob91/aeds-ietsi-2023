@@ -1,10 +1,10 @@
 ---
 format: 
   revealjs: 
-    # self-contained: true
+    self-contained: false
     theme: [default, theme/theme.scss]
-    footer: "R Aplicado a los Proyectos de Investigación - Sesión 6"
-    logo: img/icon-512-insnsb.jpg
+    footer: "Análisis Estadístico de Datos en Salud 2023 - Día 6"
+    logo: img/logo.png
     transition: convex
     background-transition: zoom
     incremental: false
@@ -14,7 +14,7 @@ format:
     # height: 1080
     height: 900
     width: 1600
-    # parallax-background-image: img/bg-ietsi-slide-first.png
+    # parallax-background-image: images/bg-ietsi-slide-first.png
     # parallax-background-size: "1920px 1080px"
     chalkboard: true
     code-block-background: true
@@ -37,27 +37,25 @@ auto-agenda:
   bullets: numbered
   heading: Agenda
 ---
-
 \
 
 \
 
 <h1>Sesión 6</h1>
 
-<h2>[Curso: R Aplicado a los Proyectos de Investigación]{.plo}</h2>
+<h2>[Curso: Análisis Estadístico de Datos en Salud]{.plo}</h2>
 
 <hr>
 
 <h3>[Percy Soto-Becerra, M.D., M.Sc(c)]{.negro}</h3>
 
-<h4>[InkaStats Data Science Solutions | Medical Branch]{.negro}</h4>
+<h4>[DIS -- IETSI, EsSalud]{.negro}</h4>
 
-<h4>[2022-10-14]{.negro}</h4>
+<h4>[2023-06-14]{.negro}</h4>
 
 `r fontawesome::fa("github", "black")` &nbsp; [https://github.com/psotob91](https://github.com/psotob91)
 
-![](img/social-image-f22.png){.absolute top=390 left=950 width="600"}
-
+![](img/logo.png){.absolute top=390 left=950 width="600"}
 
 ```{r}
 #| echo: false
@@ -98,6 +96,7 @@ pacman::p_load(tidyverse,
 # Introducción a la inferencia estadística
 
 ## Inferencia Estadística
+<hr>
 
 -   Rama de la Estadística que trata sobre procedimientos que permiten obtener conclusiones de la población basándonos en los datos de una sola muestra.
 
@@ -109,6 +108,7 @@ pacman::p_load(tidyverse,
 -   En este curso, como en la mayoría de cursos básicos, seguiremos el enfoque frecuentista.
 
 ## Inferencia Estadística bajo la lupa frecuentista
+<hr>
 
 -   Los procedimientos de prueba de hipóteis y de estimación de intervalos de confianza trabajan bajo el enfoque frecuentista.
 
@@ -117,28 +117,34 @@ pacman::p_load(tidyverse,
 -   Trabaja bajo la idea que puedes repetir infnitas o muchísimas veces el mismo estudio, pero sobre una nueva muestra aleatoria obtenida.
 
 ## Estimación
+<hr>
 
 ![](img/estimacion.png)
 
 ## Estimación (cont.)
+<hr>
 
 ![](img/estimacion2.png)
 
 ## Prueba de hipótesis
+<hr>
 
 ![](img/ph.png)
 
 ## Lógica frecuentista
+<hr>
 
 ![](img/logica-frecuentista.png)
 
 ## La distribución muestral es lo importante!
+<hr>
 
 -   No importa tanto la distribución de la muestra o de la población.
 
 -   Si no que la distribución de todas las muestras posibles siga cierto comportamiento!
 
 ## La distribución muestral es lo importante
+<hr>
 
 ![](img/dist-muestral.png)
 
@@ -147,6 +153,7 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 :::
 
 ## Prueba de Hipótesis (PH)
+<hr>
 
 -   *"Método para evaluar una afirmación o hipótesis sobre un parámetro poblacional usando datos de una muestra."*
 
@@ -156,12 +163,14 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
     -   Como toda decisión, esta se mantiene hasta encontrar nueva evidencia en contra. Son decisiones 'temporales'.</FONT>
 
 ## PH (cont.)
+<hr>
 
 -   Depende del tipo de variables incluidas, de su distribución, del pareamiento, etc.
 
 -   Los métodos de prueba de hipótesis que veremos hoy se basan en la Hipótesis Nula, por ende, su nombre completo (a menudo obviado) es: **Prueba de Significancia de Hipótesis Nula**.
 
 ## PH (cont.)
+<hr>
 
 ::: callout-warning
 ## Alerta terminológica!
@@ -180,6 +189,7 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 :::
 
 ## PH (cont.)
+<hr>
 
 ::: callout-warning
 ## Otra alerta terminológica!
@@ -194,6 +204,7 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 :::
 
 ## ¿Qué solemos probar o estimar? {.scrollable}
+<hr>
 
 -   **Acerca de un parámetro:** PH contra valor hipotético o estimar el parámetro de una población.
 
@@ -206,6 +217,7 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 :::
 
 ## ¿Qué solemos probar o estimar? (cont.) {.scrollable}
+<hr>
 
 -   **Acerca de dos o más parámetros:**
 
@@ -222,12 +234,15 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 1.  `Describir diferencias entre dos poblaciones usando datos de muestra.`
 
     -   Ejemplo: Comparar prevalencia de anemia por regiones. Las regiones no `causan` anemia, pero saber estas diferencias regionales nos permite conocer las inequidades. Estamos comparando dos poblaciones diferentes.
+    
+    - A estas diferencias encontradas en una población se las llama, a veces, `asociación bivariada` (o `cruda`).
 
 2.  `Hacer inferencias causales.`
 
     -   Ejemplo: Estimar la eficacia o efectividad de las vacunas. Queremos inferir qué le hubiera pasado a una población si tomara un tratamiento contrafactual. Estamos comparando la misma población contra sigo misma en un universo contrafactual.
 
 ## Procedimiento de prueba de hipótesis
+<hr>
 
 1.  Formular las `hipótesis nula` y `alterna`.
 
@@ -238,6 +253,7 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 4.  Tomar una decisión respecto a si creemos o no en la hipótesis nula.
 
 ## ¿Qué es el valor p?
+<hr>
 
 -   Probabilidad de...
 
@@ -248,6 +264,7 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 -   Dado que asumimos que la hipótesis nula es verdadera.
 
 ## Criterios de decisión {.scrollable}
+<hr>
 
 -   Basado en el nivel de significancia estadístico (usualmente 5%, pero puede cambiar y a menudo cambia).
 
@@ -266,6 +283,7 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 :::
 
 ## Criterios de decisión (cont.) {.scrollable}
+<hr>
 
 > Valor p mide la probabilidad de observar, en una muestra, un determinado valor o más extremo que este valor si la muestra proviniera de una población donde la hipótesis nula es verdadero.
 
@@ -284,26 +302,31 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 :::
 
 ## Criterios de decisión (cont.)
+<hr>
 
 ![](img/criterio.png)
 
 ## Errores de decisión
+<hr>
 
 ![](img/errores.png)
 
 ## Definición de intervalo de confianza al P%
+<hr>
 
 -   Rango de valores que contendrían el verdadero valor del parámetro P% de las veces, si pudiera repetir el estudio muchísimas veces con muestras aleatorias diferentes del mismo tamaño.
 
 -   El IC95% significa que si pudiera tuviera 100 estudios similares, con mismo n pero muestras aleatorias diferentes, aprox. 95 estudios tendrían IC que capturarían el verdadero valor.
 
 ## Definición de intervalo de confianza al P% (cont.)
+<hr>
 
 -   No significa que el IC95% que yo observo tiene un 95% de obtener el valor del parámetro.
 
 -   De hecho, la probabilidad de que el IC95% que yo observo en mi estudio contenga el valor del parámetro no se puede estimar en estadística frecuentista, pero sabemos que es 1 (lo contiene) o 0 (no lo contiene). No admite valores intermedios.
 
 ## Procedimientos para Intervalos de Confianza
+<hr>
 
 -   Use el valor puntual como la mejor estimación del parámetro disponible basada en los datos.
 
@@ -314,14 +337,17 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 -   Con estos dos insumos, calcule los límites del intervalo de confianza.
 
 ## 12 Errores de concepto acerca del valor p
+<hr>
 
 ![](img/doce-errores.png)
 
 ## Si la hipótesis nula es cierta, siempre será posible que algunos estudios den valores muy extremos...
+<hr>
 
 ![](img/pextremo.png)
 
 ## Intervalos de confianza y valor p
+<hr>
 
 -   IC 95% también pueden ser usados para probar hipótesis
 
@@ -336,24 +362,29 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 -   Su lectura es tan útil, que varios instrumentos de valoración de la certeza de la evidencia lo usan (p. ej., GRADE).
 
 ## Intervalos de confianza pueden brindar un poco más de información
+<hr>
 
 -   Si se interpretan apropiadamente, pueden "ilustrar" mejor la incertidumbre asociada a la estimación.
 
 ![](img/info-intervals.png)
 
 ## Ejemplos de importancia del IC para valorar imprecisión (incertidumbre) de las estimaciones
+<hr>
 
 ![](img/ejemplo-ic1.png)
 
 ## Ejemplos de importancia del IC para valorar imprecisión (incertidumbre) de las estimaciones (cont.)
+<hr>
 
 ![](img/ejemplo-ic2.png)
 
 ## Otro ejemplo de importancia del IC para valorar imprecisión (incertidumbre) de las estimaciones
+<hr>
 
 ![](img/ejemplo-ic3.png)
 
 ## Significancia estadística vs Significancia clínica
+<hr>
 
 -   La significancia estadística es solo una probabilidad (una medida de incertidumbre asociada a la estimación); siempre existe la posibilidad de error (tipo I y tipo II).
 
@@ -362,22 +393,26 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 -   La incertidumbre que miden no es la que usualmente pensamos (hay muchos errores de conceptos!!).
 
 ## Significancia estadística vs Significancia clínica (cont.)
+<hr>
 
 -   Grandes tamaños de muestra permiten detectar diferencias pequeñas.
 
 -   Tamaños de muestra muy grandes resultarán en diferencias estadísticamente significativas; incluso si la diferencia clínica no es significativa.
 
 ## Significancia estadística vs Significancia clínica (cont.)
+<hr>
 
 ![](img/significancia.png)
 
 ## Las pruebas de hipótesis tradicionales a menudo no se usan en la práctica habitual
+<hr>
 
 -   Estas pruebas, son los ladrillos sobre los que se construyen otros métodos que son el estándar actual de análisis estadístico en investigación en salud: Modelos estadísticos
 
 -   Es muy raro encontrar un ejemplo actual donde sea válidas usarlas. Su gran problema es que no permiten controlar el efecto de otras variables.
 
 ## Las pruebas de hipótesis tradicionales a menudo no se usan en la práctica habitual (cont.)
+<hr>
 
 -   Usarlas para concluir potenciales efectos puede ser peligroso.
 
@@ -386,6 +421,7 @@ Entrar: <https://onlinestatbook.com/stat_sim/sampling_dist/>
 -   Usar pruebas estadísticas cuando no son válidas para responder las preguntas científicas es peligroso.
 
 ## Pruebas de hipótesis versus modelos estadísticos (ejemplo en estudio observacional)
+<hr>
 
 ![](img/prueba-modelo.png)
 
@@ -398,6 +434,7 @@ datos <- read_dta("maca_meno_fase1.dta") %>%
 ```
 
 ## Pruebas de Hipótesis {.scrollable}
+<hr>
 
 ```{r}
 #| echo: false
@@ -407,6 +444,7 @@ knitr::include_graphics("img/mermaid-param1.png")
 ```
 
 ## Pruebas de Hipótesis Paramétricas {.scrollable}
+<hr>
 
 ```{r}
 #| echo: false
@@ -416,6 +454,7 @@ knitr::include_graphics("img/mermaid-param.png")
 ```
 
 ## Pruebas de Hipótesis No Paramétricas {.scrollable}
+<hr>
 
 ```{r}
 #| echo: false
@@ -425,6 +464,7 @@ knitr::include_graphics("img/ph-nopara.png")
 ```
 
 ## ¿De qué depende la PH que debo elegir? {.scrollable}
+<hr>
 
 - `Datos` proporcionan `evidencia empírica` de alinearse con los `supuestos estadísticas` de la prueba elegida.
 
@@ -435,6 +475,7 @@ knitr::include_graphics("img/ph-nopara.png")
 - Tener en cuenta, que las `pruebas de hipótesis nula de significancia` tradicionales son `robustas` a `incumplimientos` de algunos `supuestos`.
 
 ## ¿De qué depende la PH que debo elegir? (cont.) {.scrollable}
+<hr>
 
 - Por ejemplo, las `pruebas` mencionadas son `robustas` a `incumplimiento leve/moderado de normalidad` si y solo si el `n` es `suficientemente grande`.
 
@@ -445,16 +486,19 @@ knitr::include_graphics("img/ph-nopara.png")
 ><FONT size='6'>**Opción 2:** Usar otra prueba o la misma prueba 'corregida' que sí permita analizar apropiadamente los datos que tengo.</FONT>
 
 ## Supuestos comunes a todas las PH
+<hr>
 
 - 1. Aleatorización
 
 - 2. Observaciones independientes
 
 ## Aleatorización
+<hr>
 
 ![](img/aleatorizacion.png)
 
 ## Aleatorización {.scrollable}
+<hr>
 
 - **`Muestra es aleatoria`** para `generalizar` a una `población` de interés `bien definida`. 
 
@@ -520,6 +564,7 @@ knitr::include_graphics("img/ph-nopara.png")
 :::
 
 ## ¿Qué pasa si supuesto de Aleatoridad no se cumple?
+<hr>
 
 - Incluso `sin una muestra probibilística` o una `asignación aleatoria`, la `aleatoridad` **`debe`** cumplirse.
 
@@ -528,6 +573,7 @@ knitr::include_graphics("img/ph-nopara.png")
     - <FONT size='6'>Si este supuesto en realidad no es cierto, su incumplimiento `invalida` las `inferencias` realizadas: No inferencias causales válidas, tampoco resultados generalizables a poblaciones de interés.</FONT>
     
 ## Observaciones son independientes
+<hr>
 
 - Esto es equivalente a pensar que `todos los sujetos son muestreados de la misma población` y que han sido `seleccionados` de manera `independiente` de los otros.
 
@@ -569,6 +615,7 @@ knitr::include_graphics("img/ph-nopara.png")
 - Si la distribución de la `variable respuesta no es normal`, pero la `muestra` es `suficientemente grande` ($n \to \infty$), entonces la `distribución muestral de medias` es `normal`: `Teorema del Límite Central` garantiza `normalidad asintótica`.
 
 ## La idea en un Tweet! 
+<hr>
 
 ```{r}
 #| echo: false
@@ -577,6 +624,7 @@ knitr::include_graphics("img/normality.png")
 ```
 
 ## Normalidad asintótica de la distribución muestral {.scrollable}
+<hr>
 
 ```{r}
 #| echo: false
@@ -605,6 +653,7 @@ knitr::include_graphics("img/normalidad-asintotica.png")
 :::
 
 ## ¿Cómo evaluar normalidad?
+<hr>
 
 - La normalidad es sobre la población, no sobre la muestra.
 
@@ -615,6 +664,7 @@ knitr::include_graphics("img/normalidad-asintotica.png")
 - Métodos de prueba de hipótesis pueden complementar en tamaños de muestras moderados. Nunca usar solos!
 
 ## ¿Cómo evaluar normalidad? (cont.) {.scrollable}
+<hr>
 
 ::: panel-tabset 
 
@@ -687,6 +737,7 @@ datos2 %>%
 datos %>% 
   shapiro_test(weight)
 ```
+
 > **H0:** La distribucion de la variable en la poblacion es normal.
 > **Ha:** La distribucion de la variable en la poblacion no es normal.
 > **Conclusión:** Con un nivel de significancia del 5%, se rechaza la H0. La distribución de la variable en la población no es normal.
@@ -698,6 +749,7 @@ datos %>%
 datos %>% 
   shapiro_test(e2)
 ```
+
 > **H0:** La distribucion de la variable en la poblacion es normal.
 > **Ha:** La distribucion de la variable en la poblacion no es normal.
 > **Conclusión:** Con un nivel de significancia del 5%, se rechaza la H0. La distribución de la variable en la población no es normal.
@@ -705,6 +757,7 @@ datos %>%
 :::
 
 ## Homogeneidad de varianzas
+<hr>
 
 - Consiste en que la `varianza` de la variable en `cada grupo` a comparar tiene el `mismo valor`. 
 
@@ -712,6 +765,7 @@ datos %>%
 
 
 ## Homogeneidad de varianzas (cont.)
+<hr>
 
 - Muchas pruebas (t de Student, ANOVA, etc.) requieren el `cumplimiento` de este `supuesto` para poder dar inferencias válidas de `comparación de grupos`.
 
@@ -721,6 +775,7 @@ datos %>%
 
 
 ## ¿Cómo evaluar homogeneidad de varianzas? {.scrollable}
+<hr>
 
 ::: panel-tabset 
 
@@ -775,13 +830,21 @@ datos3 %>%
 
 
 ## Supuestos 'implícitos' de todas las PH
+<hr>
 
 - 5. Datos medidos sin error 
 
-- 6. No existencia de sesgo (error sistemático)
+    + Si error es `no diferencial`, entonces `sesgo de medición` es predecible, su dirección diluye el tamaño de la diferencia estimada.
+    + Si error es `diferencial`, entonces causan un `sesgo de medición` `no predecible`.
+
+- 6. No existencia de otras fuentes de sesgo (error sistemático)
+
+    + Si muestreo no es aleatorio, entonces puede haber `sesgo de selección`.
+    + Si no hay asignación aleatoria, entonces puede haber  `sesgo de confusión`.
 
 
 ## Pruebas de Hipótesis con R 
+<hr>
 
 - Existen `distintos paquetes` en R base para realizar `PH` o `estimación`.
 
@@ -800,6 +863,7 @@ library(rstatix)
 # Estimación y Pruebas de Hipótesis para Variables Respuesta Numéricas: Uno o dos grupos
 
 ## Para un grupo {.scrollable}
+<hr>
 
 ::: panel-tabset
 
@@ -1061,6 +1125,7 @@ df %>% wilcox_test(len ~ supp,
 :::
 
 ## Estimación y PH para dos grupos independientes {.scrollable}
+<hr>
 
 ::: panel-tabset
 
@@ -1140,532 +1205,60 @@ datos2 %>%
 
 :::
 
-# Estimación y Pruebas de Hipótesis para Variables Respuesta Numéricas: Tres o más grupos
 
-## Una motivación para comenzar
-
--   Se desea comparar `3 tratamientos` (A, B y C) para evaluar su efecto en el `IMC`.
-
--   Una opción es comparar los `promedios de IMC` al final de la intervención.
-
--   Las `3 pruebas t de Student` con sus `valores p` se muestran:
-
-    -   <FONT size='5'> A vs B (p = 0.032) </FONT>
-
-    -   <FONT size='5'> B vs C (p = 0.062) </FONT>
-
-    -   <FONT size='5'> A vs C (p = 0.047) </FONT>
-
-## Una motivación para comenzar (cont.)
-
--   ¿Con un nivel de significancia de 5%, podemos concluir que existe asociación entre el tratamiento y el IMC? ¿Entre qué tratamientos el IMC promedio es diferente?
-
--   Asumiremos que `controlar la probabilidad de error tipo 1` es una `cuestión fundamental` en este estudio.
-
-    -   <FONT size='6'> Hay un debate filósfico/estadístico de en qué circunstancias este control no es apropiado. </FONT>
-
-    -   <FONT size='6'> Corregir por la probabilidad de error tipo 1 no es la única opción para obtener inferencias válidas. </FONT>
-
-## Probabilidad de error tipo 1
-
-![](img/errores.png)
-
--   Probabilidad de error tipo 1 es también conocido como `nivel de significancia`.
-
--   $1 - Pr(\beta)$ es conocida como `Potencia` o `Poder` estadístico.
-
-## ¡Alerta! A más pruebas, más error
-
--   Si cada prueba t de Student tiene un `nivel de significancia prefijado` de 5% ($\alpha = 0.05$), la `probabilidad de error tipo 1` `global` (de todas las pruebas en conjunto) no necesariamente será de 0.05.
-
--   Asumamos que las tres hipótesis son independientes entre sí, entonces tendríamos lo siguiente:
-
-## A más pruebas, más error (cont.)
-
--   Pruebas de hipótesis para `comparar 3 o más grupos` permiten `mantener` la `probabilidad` de `error tipo 1 global` por `debajo de un nivel pre-fijado`.
-
-![<FONT size='4'>Imagen tomada de: Lee S; et al. What is the proper way to apply the multiple comparison test? Korean Joournal of Anesthesiology 2018; 71(5): 353-360. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6193594/#!po=73.0769</FONT>](img/multiples-comparasiones.png)
-
-## Soluciones al problema de la probabilidad de error tipo 1
-
--   `No` hay `consenso` entre expertos.
-
--   Las `agencias reguladoras` (p. ej., EMA, FDA, IETSI) optan por el `ajuste` de `comparaciones múltiples`.
-
-    -   <FONT size='6'> Una opción es usar una `secuencia ANOVA`, luego `pruebas de comparaciones múltiples`.</FONT>
-    -   <FONT size='6'> Otras soluciones, más populares que la secuencia de ANOVA, las discutiremos al final.</FONT>
-
-## Pruebas globables que controlan la probabilidad de error tipo 1 {.scrollable}
-
--   Podemos probar hipótesis acerca de `parámetros` de `3 o más` grupos.
-
--   El enfoque `similar` que para `dos poblaciones`, pero las `hipótesis nula` y `alterna` son las siguientes:
-
-> **H0:** Todas las poblaciones tienen iguales `medias`\|`proporciones`\|`medianas`\|`tasas` de la variable respuesta son iguales.
-
-> **HA:** Al menos dos poblaciones tienen diferentes `medias`\|`proporciones`\|`medianas`\|`tasas` de la variable respuesta.
-
-## Análisis de Varianza de una vía
-
--   También llamada: `one-way ANOVA`
-
--   Permite probar la hipótesis de `diferencia de medias` entre `dos o más poblaciones`.
-
-    -   <FONT size='6'>Los usamos comúnmente para probar diferencia de medias entre 3+.</FONT>
-
--   Nombre del método hace referencia a que `analiza la variabilidad` (`“varianza”`):
-
-    -   <FONT size='6'>Variabilidad de la variable numérica dentro de cada grupo y entre los grupos.</FONT>
-    -   <FONT size='6'>Si se cumplen ciertos supuestos, las varianzas permiten comparar medias.</FONT>
-
-## Hipótesis estadísticas del ANOVA one-way
-
--   **H0:** Todas las `medias poblacionales` son `iguales` entre los grupos.
-
--   **Ha:** Al `menos dos medias poblacionales` son `diferentes` entre los grupos.
-
-## Lógica de ANOVA (1/4)
-
-![](img/logica-anova1.png)
-
-<FONT size='6'>Mismas `varianzas entre grupos` ($Var_{EG} = \triangle{X} = 10$) entre escenarios, pero diferente `varianza intragrupo` ($VAR_{IG}$) entre escenarios)</FONT>
-
-## Lógica de ANOVA (2/4)
-
-![](img/logica-anova2.png)
-
-## Lógica de ANOVA (3/4)
-
-![](img/logica-anova3.png)
-
-<FONT size='6'>Diferentes `varianzas entre grupos` ($Var_{EG}$) entre escenarios, pero misma `varianza intragrupo` ($VAR_{IG} = \triangle{X} = 15$) entre escenarios)</FONT>
-
-## Lógica de ANOVA (4/4)
-
-![](img/logica-anova4.png)
-
-## En resumen: ANOVA
-
-![](img/logica-anova5.png)
-
-## Distribución y estadístico F
-
-![](img/prueba-f.png)
-
-## Particionando la variabilidad en ANOVA one-way
-
-![](img/anova-partition.png)
-
-## ANOVA one-way en R {.scrollable}
-
--   Usaremos función `anova_test()` del paquete `{rstatix}`.
-
--   Esta función permite el uso de otros tipos de ANOVA: <https://rpkgs.datanovia.com/rstatix/reference/anova_test.html>
-
-```{r}
-#| echo: false
-library(haven)
-datos <- read_dta("maca_meno_fase1.dta") %>% 
-  as_factor() 
-```
-
-::: panel-tabset
-### Caso 1
-
-```{r}
-library(rstatix)
-datos %>% 
-  anova_test(weight ~ treat, detailed = TRUE)
-```
-
--   La prueba ANOVA one-way no genera resultados puntuales, debemos generarlos con otra función:
-
-```{r}
-datos %>% 
-  group_by(treat) %>% 
-  get_summary_stats(weight, type = "mean_sd")
-```
-
--   También es bueno visualizar los patrones mediante gráfico de cajas:
-
-```{r}
-library(ggpubr)
-datos %>% 
-  ggboxplot(x = "treat", y = "weight")
-```
-
-::: callout-note
-## Supuestos
-
--   Aleatorización
-
--   Indenpendencia de observaciones
-
--   Normalidad
-
-    -   Supuesto de normalidad condicional: $Y_i \sim Normal$, es decir $Y|x \sim Normal$
-
-```{r}
-library(ggpubr)
-datos %>% 
-  ggqqplot("weight", facet.by = "treat")
-```
-
-    + Una mejor forma de evaluar la normalidad es usando los residuos.
-
--   Homogeneidad de varianzas (\*)
-
-    -   Se podría evaluar si las rectas de los gráficos qqplot normal son paralelas o aproximadamente paralelas:
-
-```{r}
-datos %>% 
-  ggqqplot("weight", color = "treat")
-```
-
--   Otra opción es evaluar los residuales. Esto lo veremos en regresión lineal.
-
--   Es preferible `asumir` que `no hay homocedaticidad` y realizar un `ajuste robusto` a `heterogeneidad de varianzas`.
-
-```{r}
-datos %>% 
-  anova_test(weight ~ treat, detailed = TRUE, white.adjust = TRUE)
-```
-
--   No valores extremos.
-
-(\*) Este supuesto puede flexibilizarse:
-
-1)  Usando algún método robusto de estimación de varianza.
-
-2)  Usando remuestreo (Prueba de permutación o Bootstrapping)
-:::
-
-### Caso 2
-
-```{r}
-datos %>% 
-  anova_test(lh ~ treat, detailed = TRUE)
-```
-
--   La prueba ANOVA one-way no genera resultados puntuales, debemos generarlos con otra función:
-
-```{r}
-datos %>% 
-  group_by(treat) %>% 
-  get_summary_stats(lh, type = "mean_sd")
-```
-
--   También es bueno visualizar los patrones mediante gráfico de cajas:
-
-```{r}
-datos %>% 
-  ggboxplot(x = "treat", y = "lh")
-```
-
-::: callout-note
-## Supuestos
-
--   Aleatorización
-
--   Indenpendencia de observaciones
-
--   Normalidad
-
-    -   Supuesto de normalidad condicional: $Y_i \sim Normal$, es decir $Y|x \sim Normal$
-
-```{r}
-library(ggpubr)
-datos %>% 
-  ggqqplot("lh", facet.by = "treat")
-```
-
-    + Una mejor forma de evaluar la normalidad es usando los residuos.
-
--   Homogeneidad de varianzas (\*)
-
-    -   Se podría evaluar si las rectas de los gráficos qqplot normal son paralelas o aproximadamente paralelas:
-
-```{r}
-datos %>% 
-  ggqqplot("lh", color = "treat")
-```
-
--   Otra opción es evaluar los residuales. Esto lo veremos en regresión lineal.
-
--   A veces es preferible `asumir` que `no hay homocedaticidad` y realizar un `ajuste robusto` a `heterogeneidad de varianzas`.
-
-```{r}
-datos %>% 
-  anova_test(lh ~ treat, detailed = TRUE, white.adjust = TRUE)
-```
-
--   No valores extremos.
-
-(\*) Este supuesto puede flexibilizarse:
-
-1)  Usando algún método robusto de estimación de varianza.
-
-2)  Usando remuestreo (Prueba de permutación o Bootstrapping)
-:::
-:::
-
-## Kruskal Wallis test {.scrollable}
-
--   Alternativa `no paramétrica` de `ANOVA one-way`.
-
--   Si supuestos se cumplen, compara `medianas`.
-
--   Usaremos función `kruska_test()` del paquete `{rstatix}`.
-
--   Esta función permite el uso de otros tipos de ANOVA: <https://rpkgs.datanovia.com/rstatix/reference/kruskal_test.html>
-
-```{r}
-datos %>% 
-  kruskal_test(weight ~ treat)
-```
-
--   La prueba Kruskal Wallis no genera resultados puntuales, debemos generarlos con otra función:
-
-```{r}
-datos %>% 
-  group_by(treat) %>% 
-  get_summary_stats(weight, type = "median_iqr")
-```
-
--   También es bueno visualizar las distribuciones
-
-```{r}
-library(ggpubr)
-datos %>% 
-  ggboxplot(y = "weight", x = "treat")
-```
-
-::: callout-note
-## Supuestos
-
--   Aleatorización
-
--   Indenpendencia de observaciones
-
--   Misma distribución salvo por la mediana:
-
-    -   Esto significa que Kruskal Wallis también es perjudicado en cierto modo por la heterogeneidad de varianzas porque afecta el supuesto de igualdad de distribuciones
-
-    -   Podemos usar gráfico de densidades:
-
-```{r}
-library(ggpubr)
-datos %>% 
-  ggdensity(x = "weight", 
-            y = "..density..", 
-            fill = "treat", 
-            color = "treat", 
-            add = "median")
-```
-
-    + Podemos usar gráfico de violin: Combina cajas y densidad
-
-```{r}
-library(ggpubr)
-datos %>% 
-  ggviolin(x = "treat", 
-            y = "weight", 
-            color = "treat", 
-            add = "boxplot")
-```
-:::
-
-## Comparaciones múltiples {.scrollable}
-
--   Hay varios enfoques de comparaciones múltiples.
-
--   Algunas son pre-hoc y otras post-hoc.
-
--   Veremos solo un par para ejemplificar:
-
-::: panel-tabset
-### Post-hoc ANOVA
-
--   Para ANOVA one-way clásico:
-
-```{r}
-aov(weight ~ treat, data = datos) %>% 
-  tukey_hsd()
-```
-
--   Si homogeneidad de varianzas no se cumple:
-
-```{r}
-datos %>% 
-  games_howell_test(weight ~ treat)
-```
-
--   En epidemiología e investigación clínica se prefiere ajustes más conservadores. Uno de ellos es el ajuste de Bonferroni (uno de los más conservadores)
-
-```{r}
-library(emmeans)
-datos %>% 
-  emmeans_test(weight ~ treat, p.adjust.method = "bonferroni")
-```
-
-### Post-hoc KW
-
-```{r}
-datos %>% 
-  dunn_test(weight ~ treat)
-```
-:::
-
-
-# Pruebas de hipótesis para variables respuesta categóricas
-
-
-## Prueba Chi cuadrado {.scrollable}
-
-::: {.panel-tabset}
-
-### {rstatix}
-
-```{r}
-table(datos2$married2, datos2$treat) -> xtab
-
-xtab
-```
-
-```{r}
-xtab  %>% 
-  chisq_test()
-```
-
-```{r}
-xtab  %>% 
-  chisq_test() %>%  
-  chisq_descriptives()
-```
-
-### {gtsummary}
-
-```{r}
-datos2 %>% 
-  tbl_cross(
-    row = married2,
-    col = treat, 
-    percent = "row"
-  ) %>% 
-  add_p()
-```
-
-:::
-
-
-## Prueba exacta de Fisher {.scrollable}
-
-::: {.panel-tabset}
-
-### {rstatix}
-
-```{r}
-table(datos2$married2, datos2$treat) -> xtab
-
-xtab
-```
-
-```{r}
-xtab  %>% 
-  fisher_test()
-```
-
-### {gtsummary}
-
-```{r}
-datos2 %>% 
-  tbl_cross(
-    row = married2,
-    col = treat, 
-    percent = "row"
-  ) %>% 
-  add_p(
-     test = "fisher.test"
-  )
-```
-
-:::
-
-
-## Creación de tablas reproducibles con gtsummary {.scrollable}
-
-- Se puede agregar el valor p en las tablas de gtsummary:
-
-```{r}
-library(gtsummary)
-datos2 %>%
-  dplyr::select(treat, age, weight, e2, fsh, lh, race, married) %>% 
-  tbl_summary(
-    by = treat
-  ) %>%  
-  add_p()
-```
-
-- Tambien se puede personalizar las pruebas de hipótesis: <https://www.danieldsjoberg.com/gtsummary/reference/tests.html?q=add%20_%20p>
-
-
-## Recomendaciones de reporte {.scrollable}
-
-- `No reporte valores p innecesarios`, que no respondan sus preguntas de investigación pre-definidas.
-
-- Es una `mala práctica` reportar tablas comparativas descriptivas con valores p. Lamentablemente es muy difundida.
-
-- Varias guías, comenzando por `STROBE` (para observacionales) y `CONSORT` (para ensayos clínicos) explícitamente recomiendan en contra de reportar estas tablas. Solo haga una comparación descriptiva de los resultados de la tabla. 
-
-
-## ¿Qué dice STROBE? {.scrollable}
-
-- La guía "Strengthening the reporting of observational studies in epidemiology (STROBE) statement" da algunas recomendaciones para tablas tipo 1: 
-
-```{r}
-#| fig-align: center
-#| echo: false
-#| out-width: 100%
-knitr::include_graphics("img/strobe-caratula.png")
-```
-
-## ¿Qué dice STROBE? {.scrollable}
-
-- STROBE recomienda en contra de reportar valores p en las tablas descriptivas!!
-
-
-```{r}
-#| fig-align: center
-#| echo: false
-#| out-width: 100%
-knitr::include_graphics("img/strobe-nopvalue.png")
-```
-<center><https://journals.lww.com/epidem/Fulltext/2007/11000/Strengthening_the_Reporting_of_Observational.28.aspx></center>
-
-- Lamentablemente sigue siendo una mala práctica muy difundida. Evitemos esta mala práctica.
-
-## ¿Qué dice CONSORT? {.scrollable}
-
-- El "Consolidated Standards of Reporting Trials (CONSORT)" recomienda no usar valores p ni métodos de inferencia estadística en la Tabla 1.
-
-- Para más información revise el siguiente artículo: <https://www.bmj.com/content/340/bmj.c869>
-
-## `r fontawesome::fa("laptop-code", "white")` Nuestro turno {background-color="#000000"}
+## `r fontawesome::fa("mug-saucer", "white")` Hagamos una pausa {background-color="#00817E"}
 <hr>
 
-\
+::: r-fit-text
 
-- Descargue la carpeta denominada [taller06]{.verde-h3} disponible en la carpeta compartida.
+<center>
 
-- Abra el proyecto denominado [taller06.Rproj]{.verde-h3}
+Tomemos un descanso de `5 minutos`...
 
-- Complete y ejecute el código faltante en los chunk de código.
+Estire las piernas `r fontawesome::fa("person-walking", "white")`... 
 
-- Una vez culmine todo el proceso, renderice el archivo .qmd.
+Deje de ver las pantallas `r fontawesome::fa("laptop", "white")`...
 
-\
-\
-\  
+... cualquier `r fontawesome::fa("laptop", "white")`, las del celular `r fontawesome::fa("mobile", "white")` también.
+
+</center>
+
+:::
+
+```{r}
+#| echo: false
+library(countdown)
+countdown_timer <- function(
+    minutes = 1, 
+    play_sound = TRUE, 
+    font_size = "2em", 
+    ...
+) {
+  countdown(
+    minutes = minutes,
+    # Fanfare when it's over
+    play_sound = play_sound,
+    # Set timer theme to match solarized colors
+    color_border              = "#404041",
+    color_text                = "white",
+    color_background = "#000000",
+    color_running_background  = "#72994E",
+    color_running_text        = "white",
+    color_finished_background = "#EE6331",
+    color_finished_text       = "white",
+    font_size = font_size,
+    ...
+  )
+}
+```
+
+```{r}
+#| echo: false
+countdown_timer(5)
+```
+
+## 
+
 
 ## 
 
