@@ -67,7 +67,7 @@ library(summarytools)
 Utilicemos lo aprendido en sesiones previas para importar los datos de `linelist_cleaned` con el nombre **"data_ebola"** y de `boost_inmuno` con el nombre **"data_inmuno"**. Ambas son bases de datos libres tomadas del libro [The Epidemiologist R handbook](https://epirhandbook.com/en/index.html) y del estudio titulado “Immunogenicity and reactogenicity of a third dose of BNT162b2 vaccine for COVID-19 after a primary regimen with BBIBP-CorV or BNT162b2 vaccines in Lima, Peru” ([DOI](https://doi.org/10.1101/2022.05.01.22274548)), respectivamente.
 
 
- {.callout-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Recordar
 
 En sesiones previas aprendimos que antes de importar cualquier base de datos a nuestro R, debemos tener claro dos aspectos:
@@ -77,7 +77,7 @@ En sesiones previas aprendimos que antes de importar cualquier base de datos a n
 2. La extensión de la base -> Verificar si es formato stata (.dta), excel (.xlsx), spss (.sav), etc.
 
 _y no olvidar que en la función `import()` se debe incluir tanto el nombre de la base como su extensión._
-
+:::
 
 Ahora importemos ambas bases:
 
@@ -91,12 +91,12 @@ data_inmuno <- import("boost_inmuno.dta")
 
 Antes de empezar, démosle un vistazo a las bases de datos importadas:
 
- {.callout-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Explorando la data
 
- {.panel-tabset}
+:::{.panel-tabset}
 
-## Data_ebola
+### Data_ebola
 
 ```{r}
 head(data_ebola)
@@ -112,7 +112,7 @@ data_ebola %>%
 ```
 
 
-## Data_inmuno
+### Data_inmuno
 
 ```{r}
 head(data_inmuno)
@@ -127,7 +127,8 @@ data_inmuno %>%
   skim()
 ```
 
-
+:::
+:::
 
 
 ## Análisis descriptivo univariado de datos numéricos
@@ -137,9 +138,6 @@ data_inmuno %>%
 Calcular la media "IgG_Basal":
 
 _¿Cómo interpretarías los resultados encontrados? (discutirlo en la sesión)_
-
-
-
 
 ```{r}
 #escribir el código aquí
@@ -163,8 +161,6 @@ _¿Cómo interpretarías los resultados encontrados? (discutirlo en la sesión)_
 Calcular la media, desviación estándar, mediana, P25 y P75 del tiempo de dosis de refuerzo:
 
 _¿Cómo interpretarías los resultados encontrados? (discutirlo en la sesión)_
-
-
 
 
 ```{r}

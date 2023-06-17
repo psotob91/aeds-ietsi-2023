@@ -1257,8 +1257,6 @@ countdown_timer <- function(
 countdown_timer(5)
 ```
 
-## 
-
 
 ## 
 

@@ -96,14 +96,14 @@ website:
                 - text: "Taller 06: Instructivo"
                   file: taller/taller06/taller06_instructivo.html
                 - text: "Taller 06: Solucionario"
-                  file: taller/taller06/taller06_instructivo_solno.html            
+                  file: taller/taller06/taller06_instructivo_sol.html            
             - text: "7: Día 7"
               file: content/07-content.qmd
               contents: 
                 - text: "Taller 07: Instructivo"
                   file: taller/taller07/taller07_instructivo.html
                 - text: "Taller 07: Solucionario"
-                  file: taller/taller07/taller07_instructivo_sol.html
+                  file: taller/taller07/taller07_instructivo_solno.html
             - text: "8: Día 8"
               file: content/08-content.qmd
               contents: 

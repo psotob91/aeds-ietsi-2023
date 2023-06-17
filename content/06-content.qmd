@@ -28,7 +28,7 @@ slide_buttons("/slides/sesion06/sesion06")
 ```
 
 ```{=html}
-<iframe width="780" height="500" src="../slides/sesion05/sesion05.html" title="Sesión 6 - Inferencia Estadística con R"></iframe>
+<iframe width="780" height="500" src="../slides/sesion06/sesion06.html" title="Sesión 6 - Inferencia Estadística con R"></iframe>
 ```
 
 ### Talleres
