@@ -4,11 +4,13 @@ project:
     - "*.qmd"
     - "!slides/"
     - "!taller/"
+    - "!assignment/"
   resources:
     - "files/"
     - "slides/"
     - "taller/"
-# See https://quarto.org/docs/projects/code-execution.html#freeze
+    - "assignment/"
+    # See https://quarto.org/docs/projects/code-execution.html#freeze
 execute:
   freeze: auto  # Re-render only when source changes
 
@@ -103,7 +105,7 @@ website:
                 - text: "Taller 07: Instructivo"
                   file: taller/taller07/taller07_instructivo.html
                 - text: "Taller 07: Solucionario"
-                  file: taller/taller07/taller07_instructivo_solno.html
+                  file: taller/taller07/taller07_instructivo_sol.html
             - text: "8: Día 8"
               file: content/08-content.qmd
               contents: 
@@ -114,12 +116,9 @@ website:
 
     - title: "Examen Final"
       contents:
-        - section: "Información general"
+        - section: "Examen Final"
           contents:
-            - assignment/index.qmd
-        - section: "Problem sets"
-          contents:
-            - assignment/01-problem-set.qmd
+            - assignment/Examen_Final_Instrucciones.qmd
 
     - title: "Recursos"
       contents:
@@ -128,14 +127,9 @@ website:
             - resource/index.qmd
             - resource/r-recursos.qmd
             - resource/style.qmd
-            # - resource/data.qmd
-            # - resource/citations.qmd
         - section: "Guías"
           contents:
             - resource/manual_installR/install.qmd
-          #   - resource/markdown.qmd
-          #   - resource/rmarkdown.qmd
-          #   - resource/unzipping.qmd
   page-footer:
     left: |
       Contenido {{< fa brands creative-commons >}} {{< var course.copyright_year >}} por [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>

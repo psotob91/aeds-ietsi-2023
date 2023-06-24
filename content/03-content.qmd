@@ -1,12 +1,19 @@
 ---
 title: "Sesión 03"
-date: "2022-10-07"
+date: "2023-05-31"
 ---
 
 ## Objetivos
 
-[Disponible cuando se grabe esta clase]
+- Datos tidy y {dplyr} para manejo de datos.
 
+- Operador pipe `%>%`.
+
+- Verbos de {dplyr}: select(), filter(), mutate(), rename().
+
+- Uso de helpers.
+
+- Metados: etiquetas de variables con set_var_labels().
 
 ## Materiales
 

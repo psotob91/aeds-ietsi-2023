@@ -1,61 +1,5 @@
 [
   {
-    "objectID": "assignment/01-problem-set.html",
-    "href": "assignment/01-problem-set.html",
-    "title": "Problem Set 1",
-    "section": "",
-    "text": "Para este problem set 1, procesaremos los datos del artículo titulado “Comorbid Depression and Heart Failure: A Community Cohort Study” y publicado en la revista Plos One (doi: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0158570).\nHemos modificado ligeramente los datos originales para agregarles algunos problemas que permitan enfrentar problemas de calidad de datos.\nEn este problem set 1 nos centraremos solo en manejo de datos y análisis incicial de datos incluyendo gráficos. Todos los ejercicios requieren que usted haga algún tipo de comentario personal, ya sea describir los resultados observados o comentar el proceso / razonamiento seguido.\n\n\n\n\n\n\nAdvertencia\n\n\n\nEs importante que se respondan con comentarios, no solo código! La pregunta que no tiene comentarios solo valdrá 25% del puntaje total."
-  },
-  {
-    "objectID": "assignment/01-problem-set.html#entregable",
-    "href": "assignment/01-problem-set.html#entregable",
-    "title": "Problem Set 1",
-    "section": "Entregable",
-    "text": "Entregable\nEnviar este trabajo a más tardar el miércoles 19 de octubre a las 23:59 horas.\nUse la plantilla denominada: Problem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.qmd ubicada en la carpeta compartida Enlace aquí.\nDeberá enviar al siguiente correo electrónico percys1991@gmail.com una carpeta comprimida o compartida por Drive / Onedrive /Dropbox con los siguientes archivos:\n\n\n\n\n\n\nImportante\n\n\n\n\nProblem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.Rproj (configure el proyecto como aprendimos al inicio)\nProblem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.qmd\nProblem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.html (resultado de renderizar)\n\n\n\nLa carpeta comprimida o compartida por nube (Drive/Onedrive/Dropbox) deberá llamarse según las especificaciones siguientes:\n\n\n\n\n\n\nImportante\n\n\n\nProblem_Set1_ApellidoPaterno_Nombre.\nEjemplo:\nProblem_Set1_SotoBecerra_Percy\n\n\n\n\n\n\n\n\nAdvertencia\n\n\n\n\nSe descontará 1 punto por no seguir las instrucciones de nombrado de carpeta.\nSe descontará 3 puntos si la carpeta no tiene el archivo .Rproj.\nSe descontará 2 puntos si el código en el archivo .qmd no reproduce exactamente lo mostrado en el .html."
-  },
-  {
-    "objectID": "assignment/01-problem-set.html#ejercicios",
-    "href": "assignment/01-problem-set.html#ejercicios",
-    "title": "Problem Set 1",
-    "section": "Ejercicios",
-    "text": "Ejercicios\n\nEjercicio 1: Cargue los paquetes que usará. Comentar con # al lado de cada paquete un resumen breve de para qué lo usarán. Tip: Use library()\nNota: Todos los paquetes que usará deberán estar en este chunk, no en otro chunk posterior\n\n\n\nEjercicio 2: Importe los datos denominados \"pone.0158570.s002_modified.xlsx\" que se encuentran en la carpeta compartida Enlace aquí. Llame a los datos importados: “datos_crudos”.\n\n\n\nEjercicio 3: Haga un inspección global de los datos\n\nDé un vistazo a los datos. Describa brevemente sus resultados.\n\n\n\nObtenga un resumen global superficial de los datos. Describa brevemente sus resultados.\n\n\n\nObtenga una descripción un poco más detallada variable por variable de los datos. Describa brevementesus resultados.\n\n\n\n\nEjercicio 4: Procese los datos según el siguiente diccionario:\n\n\n\n\n\n\n\n\n\n\nEn un solo pipeline, haga lo siguiente:\n\n\nRenombre variables.\n\n\nRecodifique las etiquetas de las variables categóricas.\n\n\nCree las nuevas variables.\n\n\nEtiquete a las variables.\n\n\n\n# Colocar aquí el pipeline (borrar este comentario)\n\n\n\nEjercicio 5: Identifique duplicados\n\nIdentifique duplicados de fila. Describa brevementesus resultados.\n\n\n\nIdentifique duplicados de id. Describa brevemente sus resultados.\n\n\n\nSolo si hubo duplicados de fila, elimine los duplicados de fila, quedándose solo con una versión de cada observación. Comente el proceso/razonamiento.\n\nTip: Puedes usar distinct()\n\n\nSolo si hubo duplicados de id, elimine el duplicado de fila que menos información completa tenga. Comente el proceso/razonamiento.\n\nTip: Puedes usar slice() o filter()\n\n\n\nEjercicio 6: Identifique datos perdidos\n\nPresente el número de datos perdidos y tasa de completitud variable por variable en una sola salida. Describa los resultados relacionados a datos perdidos.\n\n\n\nMuestre gráficos de datos perdidos y como se agrupan entre variables.Describa los resultados relacionados a datos perdidos.\n\n\n\n\nEjercicio 7: Haga las siguientes consultas (“queries”) con los datos limpios (renombrados, etiquetados y sin duplicados)\n\nSeleccione las variables id, age y phq-9. Muestre los participantes que tienen edades entre 50 y 55 años\n\n\n\nSeleccione las variables id, ej_Frac, sod, bun y et_hf. Luego, muestre a los participantes que tiene etiología isquémica.\n\n\n\n¿Quiénes fueron los pacientes mujeres que sobrevivieron y tuvieron un phq-9 > 10?\n\n\n\n¿Cuáles fueron los valores de tiempo a muerte en los pacientes varones que murieron, que tuvieron etiología isquémica y un puntaj de phq-9 > 10?\n\n\n\n\nEjercicio 8: Haga los siguientes gráficos:\n\nMediante un gráfico de cajas, compare los valores de ejection fraction (%) entre los pacientes con etiología isquémica versus sin etiología isquémica. Muestre el resultado más simple posible.\n\n\n\nMediante un gráfico de cajas, compare los valores de ejection fraction (%) entre los pacientes con etiología isquémica versus sin etiología isquémica. Muestre el resultado más elaborado posible: Elija un tema de su agrado, agregue etiquetas (título general, título de eje X, título de eje Y, etiquetas de leyenda si aplica), modifique la escala de colores, etc.\n\n\n\nUse un gráfico de cajas y puntos dispersos (combinelos), para mostrar el nivel de bun según sexo. Muestre el resultado más simple posible.\n\nTip: use geom_jitter() para los puntos dispersos. Más info aquí: https://ggplot2.tidyverse.org/reference/geom_jitter.html\n\n\nUse un gráfico de cajas y puntos (combinelos), para mostrar el nivel de bun según sexo. Muestre el resultado más elaborado posible: Elija un tema de su agrado, agregue etiquetas (título general, título de eje X, título de eje Y, etiquetas de leyenda si aplica), modifique la escala de colores, etc.\n\nTip: use geom_jitter() para los puntos dispersos. Más info aquí: https://ggplot2.tidyverse.org/reference/geom_jitter.html\n\n\n\nEjercicio 9: Exporte los datos a los siguientes formatos. Llame a los datos exportados: “datos_limpios”\n\nFormato de R: “.rds”\n\n\n\nFormato de Excel: “.xlsx”\n\n\n\nFormato de archivo plano: “.csv”\n\n\n\nFormato de Stata: “.dta”\n\n\n\n\nEjercicio 10: Renderice el archivo .qmd final. Comparta la carpeta entera, la cual debe contener el .qmd, así como el .html."
-  },
-  {
-    "objectID": "assignment/Problem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.html",
-    "href": "assignment/Problem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.html",
-    "title": "Curso R Aplicado a los Proyectos de Investigación",
-    "section": "",
-    "text": "Para este problem set 1, procesaremos los datos del artículo titulado “Comorbid Depression and Heart Failure: A Community Cohort Study” y publicado en la revista Plos One (doi: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0158570).\nHemos modificado ligeramente los datos originales para agregarles algunos problemas que permitan enfrentar problemas de calidad de datos.\nEn este problem set 1 nos centraremos solo en manejo de datos y análisis incicial de datos incluyendo gráficos. Todos los ejercicios requieren que usted haga algún tipo de comentario personal, ya sea describir los resultados observados o comentar el proceso / razonamiento seguido.\n\n\n\n\n\n\nAdvertencia\n\n\n\nEs importante que se respondan con comentarios, no solo código! La pregunta que no tiene comentarios solo valdrá 25% del puntaje total."
-  },
-  {
-    "objectID": "assignment/Problem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.html#entregable",
-    "href": "assignment/Problem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.html#entregable",
-    "title": "Curso R Aplicado a los Proyectos de Investigación",
-    "section": "Entregable",
-    "text": "Entregable\nUse la plantilla denominada: Problem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.qmd ubicada en la carpeta compartida Enlace aquí.\nDeberá enviar al siguiente correo electrónico una carpeta comprimida o compartida por Drive / Onedrive /Dropbox con los siguientes archivos:\n\n\n\n\n\n\nImportante\n\n\n\n\nProblem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.Rproj (configure el proyecto como aprendimos al inicio)\nProblem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.qmd\nProblem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.html (resultado de renderizar)\n\n\n\nLa carpeta comprimida o compartida por nube (Drive/Onedrive/Dropbox) deberá llamarse según las especificaciones siguientes:\n\n\n\n\n\n\nImportante\n\n\n\nProblem_Set1_ApellidoPaterno_Nombre.\nEjemplo:\nProblem_Set1_SotoBecerra_Percy\n\n\n\n\n\n\n\n\nAdvertencia\n\n\n\n\nSe descontará 1 punto por no seguir las instrucciones de nombrado de carpeta.\nSe descontará 3 puntos si la carpeta no tiene el archivo .Rproj.\nSe descontará 2 puntos si el código en el archivo .qmd no reproduce exactamente lo mostrado en el .html."
-  },
-  {
-    "objectID": "assignment/Problem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.html#ejercicios",
-    "href": "assignment/Problem_Set1_ApellidoPaterno_ApellidoMaterno_Nombre.html#ejercicios",
-    "title": "Curso R Aplicado a los Proyectos de Investigación",
-    "section": "Ejercicios",
-    "text": "Ejercicios\n\nEjercicio 1: Cargue los paquetes que usará. Comentar con # al lado de cada paquete un resumen breve de para qué lo usarán. Tip: Use library()\nNota: Todos los paquetes que usará deberán estar en este chunk, no en otro chunk posterior\n\n\n\n\n\nEjercicio 2: Importe los datos denominados \"pone.0158570.s002_modified.xlsx\" que se encuentran en la carpeta compartida Enlace aquí. Llame a los datos importados: “datos_crudos”.\n\n\n\n\n\nEjercicio 3: Haga un inspección global de los datos\n\nDé un vistazo a los datos. Describa brevemente sus resultados.\n\n\n\n\n\nObtenga un resumen global superficial de los datos. Describa brevemente sus resultados.\n\n\n\n\n\nObtenga una descripción un poco más detallada variable por variable de los datos. Describa brevementesus resultados.\n\n\n\n\n\n\nEjercicio 4: Procese los datos según el siguiente diccionario:\n\n\n\n\n\n\n\n\n\n\nEn un solo pipeline, haga lo siguiente:\n\n\nRenombre variables.\n\n\nRecodifique las etiquetas de las variables categóricas.\n\n\nCree las nuevas variables.\n\n\nEtiquete a las variables.\n\n\n\n\n# Colocar aquí el pipeline (borrar este comentario)\n\n\n\nEjercicio 5: Identifique duplicados\n\nIdentifique duplicados de fila. Describa brevementesus resultados.\n\n\n\n\n\nIdentifique duplicados de id. Describa brevemente sus resultados.\n\n\n\n\n\nSolo si hubo duplicados de fila, elimine los duplicados de fila, quedándose solo con una versión de cada observación. Comente el proceso/razonamiento.\n\nTip: Puedes usar distinct()\n\n\n\n\nSolo si hubo duplicados de id, elimine el duplicado de fila que menos información completa tenga. Comente el proceso/razonamiento.\n\nTip: Puedes usar slice() o filter()\n\n\n\n\n\nEjercicio 6: Identifique datos perdidos\n\nPresente el número de datos perdidos y tasa de completitud variable por variable en una sola salida. Describa los resultados relacionados a datos perdidos.\n\n\n\n\n\nMuestre gráficos de datos perdidos y como se agrupan entre variables.Describa los resultados relacionados a datos perdidos.\n\n\n\n\n\n\nEjercicio 7: Haga las siguientes consultas (“queries”) con los datos limpios (renombrados, etiquetados y sin duplicados)\n\nSeleccione las variables id, age y phq-9. Muestre los participantes que tienen edades entre 50 y 55 años\n\n\n\n\n\nSeleccione las variables id, ej_Frac, sod, bun y et_hf. Luego, muestre a los participantes que tiene etiología isquémica.\n\n\n\n\n\n¿Quiénes fueron los pacientes mujeres que sobrevivieron y tuvieron un phq-9 > 10?\n\n\n\n\n\n¿Cuáles fueron los valores de tiempo a muerte en los pacientes varones que murieron, que tuvieron etiología isquémica y un puntaj de phq-9 > 10?\n\n\n\n\n\n\nEjercicio 8: Haga los siguientes gráficos:\n\nMediante un gráfico de cajas, compare los valores de ejection fraction (%) entre los pacientes con etiología isquémica versus sin etiología isquémica. Muestre el resultado más simple posible.\n\n\n\n\n\nMediante un gráfico de cajas, compare los valores de ejection fraction (%) entre los pacientes con etiología isquémica versus sin etiología isquémica. Muestre el resultado más elaborado posible: Elija un tema de su agrado, agregue etiquetas (título general, título de eje X, título de eje Y, etiquetas de leyenda si aplica), modifique la escala de colores, etc.\n\n\n\n\n\nUse un gráfico de cajas y puntos dispersos (combinelos), para mostrar el nivel de bun según sexo. Muestre el resultado más simple posible.\n\nTip: use geom_jitter() para los puntos dispersos. Más info aquí: https://ggplot2.tidyverse.org/reference/geom_jitter.html\n\n\n\n\nUse un gráfico de cajas y puntos (combinelos), para mostrar el nivel de bun según sexo. Muestre el resultado más elaborado posible: Elija un tema de su agrado, agregue etiquetas (título general, título de eje X, título de eje Y, etiquetas de leyenda si aplica), modifique la escala de colores, etc.\n\nTip: use geom_jitter() para los puntos dispersos. Más info aquí: https://ggplot2.tidyverse.org/reference/geom_jitter.html\n\n\n\n\n\nEjercicio 9: Exporte los datos a los siguientes formatos. Llame a los datos exportados: “datos_limpios”\n\nFormato de R: “.rds”\n\n\n\n\n\nFormato de Excel: “.xlsx”\n\n\n\n\n\nFormato de archivo plano: “.csv”\n\n\n\n\n\nFormato de Stata: “.dta”\n\n\n\n\n\n\nEjercicio 10: Renderice el archivo .qmd final. Comparta la carpeta entera, la cual debe contener el .qmd, así como el .html."
-  },
-  {
-    "objectID": "assignment/index.html",
-    "href": "assignment/index.html",
-    "title": "Tareas",
-    "section": "",
-    "text": "Los objetivos de este curso es que ustedes puedan realizar un análisis descriptivo y, cuando sea apropiado, aplicar métodos de inferencia estadístico. Cada tarea está diseñada para ayudarles a alcanzar una de estas metas."
-  },
-  {
-    "objectID": "assignment/index.html#problem-sets",
-    "href": "assignment/index.html#problem-sets",
-    "title": "Tareas",
-    "section": "Problem sets",
-    "text": "Problem sets\nPara paracticar escribir código en R, realizar análisis descriptivos y aplicar inferencia estadística, completará una serie de conjunto de problemas o Problem sets.\nDeberá demostrar que hizo un esfuerzo consciente para resolver cada pregunta.\n\n✔+: (20 puntos) La tarea está 100% completa. Todas las preguntas fueron respondidas, y la mayoría de las respuestas son correctas. El documento es limpio y fácil de seguir. El trabajo es excepcional. A menudo no asignaré este puntaje.\n✔: (18 puntos) La tarea está completa en un 70–99 % y la mayoría de las respuestas son correctas. Este es el nivel de rendimiento esperado.\n✔−: (13 puntos) La tarea está completa en menos del 70 % y/o la mayoría de las respuestas son incorrectas. Esto indica que necesita mejorar la próxima vez. Espero no asignarlos a menudo.\n\nPueden (¡y deben!) trabajar juntos en los conjuntos de problemas, pero deben entregar sus propias respuestas. No pueden trabajar en grupos de más de cuatro personas, y deben indicar quién participó en el grupo en tu tarea"
-  },
-  {
     "objectID": "content/00-content.html",
     "href": "content/00-content.html",
     "title": "Sesión 00",
@@ -116,7 +60,7 @@
     "href": "content/03-content.html",
     "title": "Sesión 03",
     "section": "",
-    "text": "[Disponible cuando se grabe esta clase]"
+    "text": "Datos tidy y {dplyr} para manejo de datos.\nOperador pipe %>%.\nVerbos de {dplyr}: select(), filter(), mutate(), rename().\nUso de helpers.\nMetados: etiquetas de variables con set_var_labels()."
   },
   {
     "objectID": "content/03-content.html#materiales",
@@ -130,7 +74,7 @@
     "href": "content/04-content.html",
     "title": "Sesión 04",
     "section": "",
-    "text": "[Disponible cuando se grabe esta clase]"
+    "text": "Manejo de datos 2: Categorización de variables.\nCreación de variables con case_when() y case_match().\nAnálisis Inicial de Datos (AID) y Análisis Exploratorio de Datos (AED).\nDuplicado, datos perdidos y valores extremos (outliers)."
   },
   {
     "objectID": "content/04-content.html#materiales",
@@ -144,7 +88,7 @@
     "href": "content/05-content.html",
     "title": "Sesión 05",
     "section": "",
-    "text": "[Disponible cuando se grabe esta clase]"
+    "text": "Medidas de resumen para variables numéricas.\nAnálisis descriptivo de variables categóricas.\nGráficos de variables numéricas con R: histograma, densidad, cajas, violin, combinación de gráficos.\nGráficos de variables categóricas con R: barra de frecuencias absolutas y relativas, barras apiladas, gráficos de pastel (pái), lollipop plot, treemap, etc."
   },
   {
     "objectID": "content/05-content.html#materiales",
@@ -158,7 +102,7 @@
     "href": "content/06-content.html",
     "title": "Sesión 06",
     "section": "",
-    "text": "[Disponible cuando se grabe esta clase]"
+    "text": "Inferencia estadística\nEstimación y prueba de hipótesis.\nPruebas para uno y dos grupos.\nEvaluación de supuestos."
   },
   {
     "objectID": "content/06-content.html#materiales",
@@ -172,28 +116,28 @@
     "href": "content/07-content.html",
     "title": "Sesión 07",
     "section": "",
-    "text": "[Disponible cuando se grabe esta clase]"
+    "text": "Pruebas para tres o más grupos.\nPruebas para variables categóricas."
   },
   {
     "objectID": "content/07-content.html#materiales",
     "href": "content/07-content.html#materiales",
     "title": "Sesión 07",
     "section": "Materiales",
-    "text": "Materiales\n\nClase grabadaSlidesTalleres\n\n\n[Disponible cuando se grabe esta clase]\n\n\n\n Ver diapositivas en una nueva ventana\n\n\n\n\n\n\n\nInstructivo en línea\nAquí\n\n\nInstructivo con solucionario\nAquí\n\n\nQuarto para alumnos\nAquí\n\n\nToda la carpeta del taller\nAquí"
+    "text": "Materiales\n\nTeoría y práctica grabadaPráctica grabadaSlidesTalleres\n\n\n\nAnotaciones extra en quarto: Aquí\n\n\n\n\n\n\n\n Ver diapositivas en una nueva ventana\n\n\n\n\n\n\n\nInstructivo en línea\nAquí\n\n\nInstructivo con solucionario\nAquí\n\n\nQuarto para alumnos\nAquí\n\n\nToda la carpeta del taller\nAquí"
   },
   {
     "objectID": "content/08-content.html",
     "href": "content/08-content.html",
     "title": "Sesión 08",
     "section": "",
-    "text": "[Disponible cuando se grabe esta clase]"
+    "text": "Reproducibilidad de resultados.\nTablas reproducibles con {gtsummary}.\nGráficos reproducibles."
   },
   {
     "objectID": "content/08-content.html#materiales",
     "href": "content/08-content.html#materiales",
     "title": "Sesión 08",
     "section": "Materiales",
-    "text": "Materiales\n\nClase grabadaSlidesTalleres\n\n\n[Disponible cuando se grabe esta clase]\n\n\n\n\n\n\n\n\nInstructivo en línea\nAquí\n\n\nInstructivo con solucionario\nAquí\n\n\nQuarto para alumnos\nAquí\n\n\nToda la carpeta del taller\nAquí"
+    "text": "Materiales\n\nTeoría y práctica grabadaPráctica grabadaSlidesTalleres\n\n\n\nAnotaciones extra en quarto: Aquí\nDatos para código de anotaciones extra: Aquí\n\n\n\n\n\n\n\n Ver diapositivas en una nueva ventana\n\n\n\n\n\n\n\nInstructivo en línea\nAquí\n\n\nInstructivo con solucionario\nAquí\n\n\nQuarto para alumnos\nAquí\n\n\nToda la carpeta del taller\nAquí"
   },
   {
     "objectID": "content/index.html",

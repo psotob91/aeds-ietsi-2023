@@ -1,11 +1,17 @@
 ---
 title: "Sesión 04"
-date: "2022-10-10"
+date: "2023-06-02"
 ---
 
 ## Objetivos
 
-[Disponible cuando se grabe esta clase]
+- Manejo de datos 2: Categorización de variables.
+
+- Creación de variables con case_when() y case_match().
+
+- Análisis Inicial de Datos (AID) y Análisis Exploratorio de Datos (AED).
+
+- Duplicado, datos perdidos y valores extremos (outliers).
 
 ## Materiales
 

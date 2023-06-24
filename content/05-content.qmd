@@ -5,8 +5,13 @@ date: "2023-06-09"
 
 ## Objetivos
 
-[Disponible cuando se grabe esta clase]
+- Medidas de resumen para variables numéricas.
 
+- Análisis descriptivo de variables categóricas.
+
+- Gráficos de variables numéricas con R: histograma, densidad, cajas, violin, combinación de gráficos.
+
+- Gráficos de variables categóricas con R: barra de frecuencias absolutas y relativas, barras apiladas, gráficos de pastel (pái), lollipop plot, treemap, etc.
 
 ## Materiales
 

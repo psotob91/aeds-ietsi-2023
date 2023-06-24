@@ -5,7 +5,13 @@ date: "2023-06-14"
 
 ## Objetivos
 
-[Disponible cuando se grabe esta clase]
+- Inferencia estadística
+
+- Estimación y prueba de hipótesis.
+
+- Pruebas para uno y dos grupos.
+
+- Evaluación de supuestos.
 
 
 ## Materiales
